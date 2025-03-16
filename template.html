@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="de-DE" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <meta name="generator" content="$pandoc-details$">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+        <meta name="author" content="Lukas Singer">
+        $if(description)$
+        <meta name="description" content="$description$">
+        $endif$
+        $if(keywords)$
+        <meta name="keywords" content="$for(keywords)$$keywords$$sep$, $endfor$">
+        $endif$
+        <title>$title$</title>
+
+        <!-- favicons -->
+        <link rel="apple-touch-icon" href="/images/favicon/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="192x192" href="/images/favicon/favicon-192x192.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon/favicon-16x16.png">
+        <link rel="icon" type="image/x-icon" href="/images/favicon/favicon.ico">
+
+        <!-- css file(s) -->
+        <link rel="stylesheet" href="/style.css" type="text/css">
+
+        <!-- scripts -->
+        <script src="/js/docready.js"></script>
+        <script src="/js/cookie-hint.js"></script>
+        <script>
+        docReady(function () { cookieHint("/legal.html#cookies"); })
+        </script>
+
+    </head>
+    <body>
+        <header>
+            <nav>
+                <ul>
+                    <li $if(nav-home)$class="selected"$endif$><a href="/index.html">Home</a></li>
+                    <li $if(nav-blog)$class="selected"$endif$><a>Blog</a></li>
+                    <li $if(nav-schule)$class="selected"$endif$><a href="/schule/index.html">Schule</a></li>
+                    <li $if(nav-theater)$class="selected"$endif$><a href="/theater/index.html">Theater</a></li>
+                    <li $if(nav-sport)$class="selected"$endif$><a>Sport</a></li>
+                    <li $if(nav-about)$class="selected"$endif$><a>About</a></li>
+                </ul>
+                $if(nav-schule)$
+                <ul>
+                    <li $if(nav-schule-home)$class="selected"$endif$><a href="/schule/index.html">Home</a></li>
+                    <li $if(nav-schule-switch-router)$class="selected"$endif$><a href="/schule/hp-docs.html">Switch &amp; Router</a></li>
+                </ul>
+                $endif$
+            </nav>
+            <div>
+                <img src="/images/banner.png" alt="">
+            </div>
+        </header>
+        <div class="content">
+            $if(is-blog)$
+            <h1 class="blog-title">$blog-title$</h1>
+            <p class="blog-date">$blog-date$</p>
+            $for(changes)$
+            <p class="blog-changelog">$changes$</p>
+            $endfor$
+            $endif$
+            $if(use-toc)$
+            <div class="toc">
+                <h1> Inhaltsverzeichnis </h1>
+                $toc$
+            </div>
+            $endif$
+            <div class="main">
+                $body$
+                <br>
+                <br>
+            </div>
+        </div>
+        <footer>
+            <ul>
+                <li>&copy; 2025 Lukas Singer</li>
+                <li>This Website is proudly made with:
+                    <ul>
+                        <li><a href="https://neovim.io/" target="_blank">Neovim</a></li>
+                        <li><a href="https://pandoc.org/" target="_blank">Pandoc</a></li>
+                        <li><a href="https://python.org/" target="_blank">Python</a></li>
+                        <li><a href="https://github.com/tdewolff/minify" target="_blank">Minify</a></li>
+                        <li><a href="https://ffmpeg.org/" target="_blank">FFmpeg</a></li>
+                        <li><a href="https://www.gimp.org/" target="_blank">GIMP</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </footer>
+    </body>
+</html>
+
