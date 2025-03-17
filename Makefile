@@ -22,6 +22,7 @@ PANDOC_FLAGS          := --from=markdown \
 						 --to=html5 \
 						 --table-of-contents \
 						 --lua-filter=fix_links.lua \
+						 --lua-filter=obfuscate.lua \
 						 --variable pandoc-details="$(PANDOC_VERSION)" \
 						 --template="$(PANDOC_TEMPLATE)" \
 						 --email-obfuscation=javascript

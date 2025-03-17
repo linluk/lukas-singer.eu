@@ -107,6 +107,7 @@ imprint
 =======
 
 **postal address:**<br/>
+<obfuscate>
 <small>
 Lukas Singer<br/>
 Universitätsstraße 33<br/>
@@ -122,6 +123,7 @@ Virgo Supercluster<br/>
 Laniakea Supercluster<br/>
 Universe<br/>
 </small>
+</obfuscate>
 
 **email:**<br/>
 <small>
