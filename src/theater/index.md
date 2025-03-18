@@ -41,7 +41,7 @@ Seither spiele ich regelmäßig in Theaterstücken, in Improtheater-Shows, betei
   * [*Lukas*/*König*/*Rumpelstilzchen* in *Ein Märchen von und mit dem BogenTheater*](https://www.bogentheater.at/archiv/324/ein-marchen-von-und-mit-dem-bogentheater) im [Zeughaus Innsbruck bei "Rundum Weihnacht"](https://www.tiroler-landesmuseen.at/termin/rundum_weihnacht23)
 * **2024**
   * [*Adrian von Wetzelstein-Ohntaler* in *Alle meine Geister!* von Rolf Kindler im BogenTheater](https://www.bogentheater.at/archiv/336/alle-meine-geister)
-  * [*Lukas* in *Das Weihnachtsradio*](https://bogentheater.at) im [Zeughaus Innsbruck bei "Rundum Weihnacht"](https://www.tiroler-landesmuseen.at/termin/familiennachmittag-3/)
+  * [*Lukas* in *Das Weihnachtsradio*](https://bogentheater.at/archiv/379/rundum-weihnachten) im [Zeughaus Innsbruck bei "Rundum Weihnacht"](https://www.tiroler-landesmuseen.at/termin/familiennachmittag-3/)
 
 ## autor
 
