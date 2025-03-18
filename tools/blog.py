@@ -24,9 +24,9 @@ import yaml
 
 BLOG_PATH = 'src/blog/'
 
-KEEP_GOING_ON_YAML_ERROR = True
+KEEP_GOING_ON_YAML_ERROR = False
 
-LOG_DEBUG = True
+LOG_DEBUG = False
 LOG_INFO = LOG_DEBUG or True
 LOG_WARNING = LOG_INFO or True
 
