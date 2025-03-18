@@ -1,4 +1,5 @@
 ---
+lang: de
 keywords:
 - lukas singer
 - theater
@@ -16,7 +17,7 @@ nav-theater: true
 
 # theater
 
-Seit 2015 bin ich in "der Theaterszene" aktiv, meine aller erste Bühnenerfahrung liegt jedoch noch viel weiter zurück. Als Volksschulkind durfte ich (ca. 1994, 1995?) in einer Inszenierung in Innsbruck/Hötting das kleine Schweinchen in Janoschs *Oh, wie schön ist Panama* spielen.
+Seit 2015 bin ich in "der Theaterszene" aktiv, meine allererste Bühnenerfahrung liegt jedoch noch viel weiter zurück. Als Volksschulkind durfte ich (ca. 1994, 1995?) in einer Inszenierung in Innsbruck/Hötting das kleine Schweinchen in Janoschs *Oh, wie schön ist Panama* spielen.
 
 Mit 27 bin ich über eine gute Freundin zu einem Improtheater-Workshop gekommen und hab mich vom ersten Moment an in das Theaterleben verliebt.
 
@@ -54,6 +55,9 @@ Seither spiele ich regelmäßig in Theaterstücken, in Improtheater-Shows, betei
   * *Dark Side Of The Door* Kurzstück/Einakter für ein Stationentheaterprojekt zum Thema *Türen* [download](/download/dark-side-of-the-door.pdf)
   * *Das Weihnachtsradio* gemeinsam mit Stephanie Senn und Markus Moosbrugger [download](/download/weihnachtsradio.pdf)
 
+<small>Die Aufführungsrechte der Stücke und Szenen liegen bei mir und meinen jeweiligen Mitautoren.
+Bei Interesse freue ich mich über Anfragen unter: [kontakt@lukas-singer.eu](mailto:kontakt+theater@lukas-singer.eu).</small>
+
 ## regie
 
 * **2019**
@@ -61,7 +65,7 @@ Seither spiele ich regelmäßig in Theaterstücken, in Improtheater-Shows, betei
 * **2020**
   * [Co-Regieseur bei *Godot kommt* von Hans Augustin im BogenTheater](https://www.bogentheater.at/archiv/206/godot-kommt)
 * **2022**
-  * [*Todora will´s wissen* nach einer Idee von Markus Moosbrugger im BogenTheater](https://www.bogentheater.at/archiv/268/todora-wills-wissen)
+  * [*Todora will's wissen* nach einer Idee von Markus Moosbrugger im BogenTheater](https://www.bogentheater.at/archiv/268/todora-wills-wissen)
 * **2023**
   * [*Geschlossene Gesellschaft* von Jean-Paul Sartre im BogenTheater](https://www.bogentheater.at/archiv/276/geschlossene-gesellschaft)
 * **2024**
