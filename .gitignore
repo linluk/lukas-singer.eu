@@ -1,2 +1,3 @@
 www/
 ssh.sh
+src/blog/**/index.md
