@@ -8,7 +8,7 @@
 #              Create minified Scripts and Stylesheets from src/**/*.(css|js) to www/**/*.(css|js)
 #              Cleanup www/**/*
 #
-MAKEFLAGS += --jobs=$(shell nproc)
+#MAKEFLAGS += --jobs=$(shell nproc)
 
 PANDOC                := $(shell which pandoc)
 MINIFY                := $(shell which minify)
@@ -24,6 +24,7 @@ PANDOC_FLAGS          := --from=markdown \
 						 --table-of-contents \
 						 --lua-filter=tools/fix_links.lua \
 						 --lua-filter=tools/obfuscate.lua \
+						 --highlight-style=zenburn \
 						 --variable pandoc-details="$(PANDOC_VERSION)" \
 						 --template="$(PANDOC_TEMPLATE)" \
 						 --email-obfuscation=javascript

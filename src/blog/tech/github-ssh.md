@@ -5,27 +5,36 @@ keywords:
 - blog
 - lukas singer
 - tech
+- git
 - github
 - ssh
-- authentification
+- authentication
 - password
 - passphrase
 - login
 - security
-description: tech - github-ssh
+description: ssh authentication for GitHub (push/pull)
 blog-date: 2018-05-14
 blog-title: GitHub via SSH
 nav-blog: true
 nav-blog-tech: true
 blog-changelog:
-- 2018-06-14: restore .ssh folder, fix access rights
-- 2025-03-17: imported from linluk.github.io + minor fixes
+- date: 2018-06-14
+  text: restore .ssh folder, fix access rights
+- date: 2025-03-17
+  text: imported from linluk.github.io + minor fixes
 ---
 
 *Due to the latest security issues at GitHub I wanted to change my password but
 don't want to retrain my muscle memory to remember a new password.
 I switched from username/password to ssh key authentication when using git via
 command line. This blog post is about setting up ssh keys for GitHub.*
+
+~~~bash
+if [[ -f foo/bar ]]; then
+    echo symtax test
+fi
+~~~
 
 
 Motivation and Goal
@@ -63,7 +72,7 @@ you can find out how to create a secure passphrase. I was lazy and just used my
 old GitHub password (the one I had before writing this blog post). IMHO it is
 secure enough because nobody should have access to my private key.
 
-```sh
+```bash
  $ ssh-keygen -t rsa -b 4096 -C "my.email@example.com.com" -f ~/.ssh/github_rsa
 Generating public/private rsa key pair.
 Enter passphrase (empty for no passphrase): 
@@ -89,7 +98,7 @@ The key's randomart image is:
 If everything was successful you should find two new files in your `~/.ssh`
 directory.
 
-```sh
+```bash
  $ ls ~/.ssh/
 github_rsa  github_rsa.pub
 ```
@@ -104,7 +113,7 @@ Let's test the uploaded key! This is simple as trying to open a ssh session to
 command will generate a warning on first attempt wich should be no problem, but
 you should double-check the fingerprint of GitHub.
 
-```sh
+```bash
  $ ssh git@github.com
 The authenticity of host 'github.com (192.30.253.112)' can't be established.
 RSA key fingerprint is SHA256:nThBg0kXUpJmglTE1IGOCspR0cTxdCARLvikW6E5Sv8.
@@ -124,14 +133,14 @@ ssh link either via the web interface (click *Clone or Download* and then *Use
 SSH*) or simply "build" it yourself. GitHub ssh links are in the format
 `git@github.com:USERNAME/REPOSITORY.git`. For example with the command:
 
-```sh
+```bash
  $ git clone git@github.com:linluk/my-dot-files.git
 ```
 
 You can also update the remote url of an existing repository to its ssh link
 using this `git remote set-url`. For example with the command:
 
-```sh
+```bash
  $ git remote set-url origin git@github.com:linluk/my-dot-files.git
 ```
 
