@@ -30,12 +30,6 @@ don't want to retrain my muscle memory to remember a new password.
 I switched from username/password to ssh key authentication when using git via
 command line. This blog post is about setting up ssh keys for GitHub.*
 
-~~~bash
-if [[ -f foo/bar ]]; then
-    echo symtax test
-fi
-~~~
-
 
 Motivation and Goal
 -------------------
