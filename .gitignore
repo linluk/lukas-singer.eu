@@ -1,4 +1,6 @@
+# generated files and folders
 www/
-ssh.sh
 src/blog/**/index.md
-scp.sh
+
+# secret files and folders
+secrets.sh
