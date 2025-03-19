@@ -1,6 +1,9 @@
-# generated files and folders
+# destination folder
 www/
+
+# generated sources
 src/blog/**/index.md
+src/highlight.css
 
 # secret files and folders
 secrets.sh
