@@ -102,8 +102,9 @@ comment: created by blog.py {datetime.datetime.now():%Y-%m-%d %H:%M:%S}
 ---
 <!-- created by blog.py {datetime.datetime.now():%Y-%m-%d %H:%M:%S} -->
 
-Blog
-====
+blog <a href="rss.xml"><img src="/images/rss.png" alt="rss" height=24></a>
+===
+
 """
 
 BLOG_CATEGORY_INDEX_HEAD = f"""---
@@ -122,8 +123,8 @@ comment: created by blog.py {datetime.datetime.now():%Y-%m-%d %H:%M:%S}
 ---
 <!-- created by blog.py {datetime.datetime.now():%Y-%m-%d %H:%M:%S} -->
 
-{{category}}
-==========
+{{category}} <a href="rss.xml"><img src="/images/rss.png" alt="rss" height=24></a>
+===
 
 """
 
@@ -238,7 +239,7 @@ def update_index_files(category_headers: dict[str, list[dict]]):
         for category, headers in sorted(
                 category_headers.items(),
                 key=lambda chs: chs[0]):
-            toplevel_index.write(f"\n{category}\n---\n\n<ul>\n")
+            toplevel_index.write(f'{category} <a href="{category}/rss.xml"><img src="/images/rss.png" alt="rss" height=16></a>\n---\n\n<ul>\n')
             category_index_file = os.path.join(BLOG_PATH, category, 'index.md')
             with open(category_index_file, 'w') as category_index:
                 category_index.write(
