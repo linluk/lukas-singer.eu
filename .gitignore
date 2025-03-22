@@ -3,6 +3,7 @@ www/
 
 # generated sources
 src/blog/**/index.md
+src/blog/**/rss.xml
 src/highlight.css
 
 # secret files and folders
