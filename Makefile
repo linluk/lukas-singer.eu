@@ -39,11 +39,15 @@ PANDOC_FLAGS            := --from=markdown \
 FFMPEG_FLAGS            := -hide_banner \
 						   -loglevel error
 
-# find all *.md files in src/ except files called index.md in src/blog
+# find all *.md files in src/ except blog files (files under src/blog) called index.md in src/blog
 MARKDOWN_SOURCES        := $(shell find src/ -type f \( -name "*.md" -a ! -regex "src\/blog\/.*index\.md" \))
+# find all *.md files in src/blog except files called index.md in src/blog
+BLOG_MARKDOWN_SOURCES   := $(shell find src/blog -type f \( -name "*.md" -a ! -regex "src\/blog\/.*index\.md" \))
 # get index.md for each directory in src/blog does not matter if it exists or not
 # 'find src/blog -type d' will give all subdirectories of AND src/blog itself.
 BLOG_INDEX_SOURCES      := $(foreach blog_dir,$(shell find src/blog -type d),$(blog_dir)/index.md)
+# 
+RSS_SOURCES             := $(foreach blog_dir,$(shell find src/blog -type d),$(blog_dir)/rss.xml)
 STYLE_HIGHLIGHT_SOURCE  := src/highlight.css
 # 'find src/ -type f \( -name "*.css" -a ! -regex "src\/highlight\.css"' will get us all '*.css' files 
 # except 'src/highlight.css' which may or may not exists, so wee add it manually.
@@ -56,9 +60,10 @@ HTML_DESTINATIONS       := $(patsubst src/%,www/%,$(patsubst %.md,%.html,$(MARKD
 STYLE_DESTINATIONS      := $(patsubst src/%,www/%,$(STYLE_SOURCES))
 SCRIPT_DESTINATIONS     := $(patsubst src/%,www/%,$(SCRIPT_SOURCES))
 RESOURCE_DESTINATIONS   := $(patsubst src/%,www/%,$(RESOURCE_SOURCES))
+RSS_DESTINATIONS        := $(patsubst src/%,www/%,$(RSS_SOURCES))
 
-SOURCES                 := $(MARKDOWN_SOURCES) $(STYLE_SOURCES) $(SCRIPT_SOURCES) $(RESOURCE_SOURCES)
-DESTINATIONS            := $(BLOG_INDEX_SOURCES) $(HTML_DESTINATIONS) $(STYLE_DESTINATIONS) $(SCRIPT_DESTINATIONS) $(RESOURCE_DESTINATIONS)
+SOURCES                 := $(MARKDOWN_SOURCES) $(BLOG_MARKDOWN_SOURCES) $(STYLE_SOURCES) $(SCRIPT_SOURCES) $(RESOURCE_SOURCES)
+DESTINATIONS            := $(BLOG_INDEX_SOURCES) $(RSS_SOURCES) $(HTML_DESTINATIONS) $(STYLE_DESTINATIONS) $(SCRIPT_DESTINATIONS) $(RESOURCE_DESTINATIONS) $(RSS_DESTINATIONS)
 
 
 .PHONY: all clean info
@@ -69,10 +74,16 @@ www/%.html: src/%.md $(PANDOC_TEMPLATE)
 	mkdir -p $(dir $@)
 	$(PANDOC) $(PANDOC_FLAGS) --output=$@ $<
 
-src/blog/%/index.md: $(CREATE_BLOG_INDEX)
+src/blog/%/rss.xml: $(CREATE_BLOG_INDEX) $(BLOG_MARKDOWN_SOURCES)
 	$(PYTHON) $(CREATE_BLOG_INDEX) $(CREATE_BLOG_INDEX_FLAGS)
 
-src/blog/index.md: $(CREATE_BLOG_INDEX)
+src/blog/rss.xml: $(CREATE_BLOG_INDEX) $(BLOG_MARKDOWN_SOURCES)
+	$(PYTHON) $(CREATE_BLOG_INDEX) $(CREATE_BLOG_INDEX_FLAGS)
+
+src/blog/%/index.md: $(CREATE_BLOG_INDEX) $(BLOG_MARKDOWN_SOURCES)
+	$(PYTHON) $(CREATE_BLOG_INDEX) $(CREATE_BLOG_INDEX_FLAGS)
+
+src/blog/index.md: $(CREATE_BLOG_INDEX) $(BLOG_MARKDOWN_SOURCES)
 	$(PYTHON) $(CREATE_BLOG_INDEX) $(CREATE_BLOG_INDEX_FLAGS)
 
 src/highlight.css: $(CREATE_HIGHLIGHT_CSS)
@@ -97,6 +108,7 @@ www/%: src/%
 clean:
 	rm -rf www/*
 	rm -f $(BLOG_INDEX_SOURCES)
+	rm -f $(RSS_SOURCES)
 	rm -f $(STYLE_HIGHLIGHT_SOURCE)
 
 info:

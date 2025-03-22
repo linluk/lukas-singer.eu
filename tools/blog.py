@@ -51,7 +51,7 @@ def datetime2rfc2822(dt: datetime.datetime | None = None) -> str:
     dst_start = datetime.datetime(
         dt.year,
         3,  # Month (March)
-        (31 - datetime.date(dt.year, 3, 31).weekday()), # Last Sunday of March
+        (31 - datetime.date(dt.year, 3, 31).weekday()),  # Last Sunday of March
         3,  # Hour
         0,  # Minute
         0,  # Second
@@ -62,13 +62,17 @@ def datetime2rfc2822(dt: datetime.datetime | None = None) -> str:
         dt.year, 10, (31 - datetime.date(dt.year, 10, 31).weekday()),
         3, 0, 0, 1)
 
-    # if dst_start <= dt < dst_end:
-    #     offset = timedelta(hours=2)  # CEST (UTC+2)
-    # else:
-    #     offset = timedelta(hours=1)  # CET (UTC+1)
-    # # Convert to GMT
-    # dt_gmt = dt - offset
-    zone = '0200' if dst_start < dt < dst_end else '0100'
+    if dst_start <= dt < dst_end:
+        offset = datetime.timedelta(hours=2)  # CEST (UTC+2)
+    else:
+        offset = datetime.timedelta(hours=1)  # CET (UTC+1)
+    # Convert to GMT
+    dt = dt - offset
+    # zone = 'GMT'
+    zone = '+0000'
+    # OR
+    # calculate the CET/CEST
+    # zone = '0200' if dst_start < dt < dst_end else '0100'
 
     return dt.strftime(f'%a, %d %b %Y %H:%M:%S {zone}')
 
@@ -121,7 +125,6 @@ comment: created by blog.py {datetime.datetime.now():%Y-%m-%d %H:%M:%S}
 {{category}}
 ==========
 
-<ul>
 """
 
 BLOG_INDEX_ENTRY = (
@@ -157,7 +160,6 @@ RSS_TEMPLATE = f"""<?xml version="1.0" encoding="UTF-8" ?>
   <link>{{link}}</link>
   <description>{{description}}</description>
   <lastBuildDate>{datetime2rfc2822()}</lastBuildDate>
-  <lastBuildDate>{date2rfc2822()}</lastBuildDate>
   <generator>{APP_NAME_VERSION}</generator>
 {{items}}
 </channel>
@@ -168,6 +170,8 @@ RSS_ITEM_TEMPLATE = """  <item>
     <title>{title}</title>
     <link>{link}</link>
     <description>{description}</description>
+    <author>Lukas Singer</author>
+    <pubDate>{date}</pubDate>
   </item>"""
 
 
@@ -226,18 +230,23 @@ def filename_compatible(name: str) -> str:
 
 
 def update_index_files(category_headers: dict[str, list[dict]]):
-    #warning('EARLY RETURN FOR DEBUG PURPOSES')
-    #return
     toplevel_index_file = os.path.join(BLOG_PATH, 'index.md')
     with open(toplevel_index_file, 'w') as toplevel_index:
         toplevel_index.write(BLOG_MAIN_INDEX_HEAD)
-        for category, headers in category_headers.items():
+        # TODO: currently we sort categories alphabetically,
+        #       maybe we should sort by latest blog entry overall
+        for category, headers in sorted(
+                category_headers.items(),
+                key=lambda chs: chs[0]):
             toplevel_index.write(f"\n{category}\n---\n\n<ul>\n")
             category_index_file = os.path.join(BLOG_PATH, category, 'index.md')
             with open(category_index_file, 'w') as category_index:
                 category_index.write(
                     BLOG_CATEGORY_INDEX_HEAD.format(category=category))
-                for header in headers:
+                category_index.write("<ul>")
+                for header in sorted(headers,
+                                     key=lambda h: h.get('blog-date', '0'),
+                                     reverse=True):
                     href = header.get('href', None)
                     if href is None:
                         error(0, "'href' missing in data!", **header)
@@ -252,7 +261,7 @@ def update_index_files(category_headers: dict[str, list[dict]]):
                     category_index.write(BLOG_INDEX_ENTRY.format(**entry))
                     toplevel_index.write(BLOG_INDEX_ENTRY.format(**entry))
                 category_index.write("</ul>")
-        toplevel_index.write("</ul>\n\n")
+            toplevel_index.write("</ul>\n\n")
 
 
 def analyze_nested_types(x, prefix=''):
@@ -273,6 +282,12 @@ def analyze_nested_types(x, prefix=''):
 
 
 def update_rss_files(category_headers: dict[str, list[dict]]):
+    # def ymd2d(ymd):
+    #     t = ymd.split('-')
+    #     d = datetime.date()
+    #     d.replace(year=t[0], month=t[1], day=t[2])
+    #     return d
+
     all_items = []
     category_items = {}
     for category, headers in category_headers.items():
@@ -283,7 +298,8 @@ def update_rss_files(category_headers: dict[str, list[dict]]):
             item = RSS_ITEM_TEMPLATE.format(
                 title=header.get('title', 'unknown'),
                 link=f"https://lukas-singer.eu{header.get('href')}",
-                description=header.get('description', ''))
+                description=header.get('description', ''),
+                date=date2rfc2822(header.get('blog-date')))
             all_items.append(item)
             category_items[category].append(item)
 
@@ -303,7 +319,7 @@ def update_rss_files(category_headers: dict[str, list[dict]]):
                 RSS_TEMPLATE.format(
                     title=f"{category} auf lukas-singer.eu",
                     link=f"https://lukas-singer.eu/blog/{category}",
-                    description=f"Der Blog über {category} auf lukas-singer.eu",
+                    description=f"Blog über {category} auf lukas-singer.eu",
                     # TODO !!!
                     items='\n'.join(all_items)))
 
