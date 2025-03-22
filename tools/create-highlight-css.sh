@@ -47,6 +47,6 @@ do
 done
 TEMP_FILE=$(mktemp)
 echo "\$highlighting-css\$" > "$TEMP_FILE"
-echo -e $EXAMPLES | pandoc --highlight-style=$PANDOC_STYLE --template="$TEMP_FILE" > "$HIGHLIGHT_CSS"
+echo -e $EXAMPLES | pandoc --metadata title="dummy" --highlight-style=$PANDOC_STYLE --template="$TEMP_FILE" > "$HIGHLIGHT_CSS"
 rm -f "$TEMP_FILE"
 
