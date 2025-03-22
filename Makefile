@@ -42,8 +42,12 @@ FFMPEG_FLAGS            := -hide_banner \
 # find all *.md files in src/ except files called index.md in src/blog
 MARKDOWN_SOURCES        := $(shell find src/ -type f \( -name "*.md" -a ! -regex "src\/blog\/.*index\.md" \))
 # get index.md for each directory in src/blog does not matter if it exists or not
+# 'find src/blog -type d' will give all subdirectories of AND src/blog itself.
 BLOG_INDEX_SOURCES      := $(foreach blog_dir,$(shell find src/blog -type d),$(blog_dir)/index.md)
 STYLE_HIGHLIGHT_SOURCE  := src/highlight.css
+# 'find src/ -type f \( -name "*.css" -a ! -regex "src\/highlight\.css"' will get us all '*.css' files 
+# except 'src/highlight.css' which may or may not exists, so wee add it manually.
+# thats how we avoid to duplicate it in $STYLE_SOURCES
 STYLE_SOURCES           := $(shell find src/ -type f \( -name "*.css" -a ! -regex "src\/highlight\.css" \)) $(STYLE_HIGHLIGHT_SOURCE)
 SCRIPT_SOURCES          := $(shell find src/ -type f -name "*.js")
 RESOURCE_SOURCES        := $(shell find src/ -type f \( -name "*.pdf" -o -name "*.png" \))
