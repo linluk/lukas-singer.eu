@@ -40,7 +40,7 @@ FFMPEG_FLAGS            := -hide_banner \
 						   -loglevel error
 
 # find all *.md files in src/ except blog files (files under src/blog) called index.md in src/blog
-MARKDOWN_SOURCES        := $(shell find src/ -type f \( -name "*.md" -a ! -regex "src\/blog\/.*index\.md" \))
+MARKDOWN_SOURCES        := $(shell find src/ -type f \( -name "*.md" -a ! -regex "src\/blog\/.*\.md" \))
 # find all *.md files in src/blog except files called index.md in src/blog
 BLOG_MARKDOWN_SOURCES   := $(shell find src/blog -type f \( -name "*.md" -a ! -regex "src\/blog\/.*index\.md" \))
 # get index.md for each directory in src/blog does not matter if it exists or not
@@ -56,7 +56,7 @@ STYLE_SOURCES           := $(shell find src/ -type f \( -name "*.css" -a ! -rege
 SCRIPT_SOURCES          := $(shell find src/ -type f -name "*.js")
 RESOURCE_SOURCES        := $(shell find src/ -type f \( -name "*.pdf" -o -name "*.png" \))
 
-HTML_DESTINATIONS       := $(patsubst src/%,www/%,$(patsubst %.md,%.html,$(MARKDOWN_SOURCES) $(BLOG_INDEX_SOURCES)))
+HTML_DESTINATIONS       := $(patsubst src/%,www/%,$(patsubst %.md,%.html,$(MARKDOWN_SOURCES) $(BLOG_MARKDOWN_SOURCES) $(BLOG_INDEX_SOURCES)))
 STYLE_DESTINATIONS      := $(patsubst src/%,www/%,$(STYLE_SOURCES))
 SCRIPT_DESTINATIONS     := $(patsubst src/%,www/%,$(SCRIPT_SOURCES))
 RESOURCE_DESTINATIONS   := $(patsubst src/%,www/%,$(RESOURCE_SOURCES))
@@ -71,7 +71,7 @@ DESTINATIONS            := $(BLOG_INDEX_SOURCES) $(RSS_SOURCES) $(HTML_DESTINATI
 all: $(DESTINATIONS)
 
 www/%.html: src/%.md $(PANDOC_TEMPLATE)
-	mkdir -p $(dir $@)
+	@mkdir -p $(dir $@)
 	$(PANDOC) $(PANDOC_FLAGS) --output=$@ $<
 
 src/blog/%/rss.xml: $(CREATE_BLOG_INDEX) $(BLOG_MARKDOWN_SOURCES)
@@ -90,19 +90,19 @@ src/highlight.css: $(CREATE_HIGHLIGHT_CSS)
 	$(BASH) $(CREATE_HIGHLIGHT_CSS)
 
 www/%.css: src/%.css
-	mkdir -p $(dir $@)
+	@mkdir -p $(dir $@)
 	$(MINIFY_CSS) $< -o $@
 
 www/%.js: src/%.js
-	mkdir -p $(dir $@)
+	@mkdir -p $(dir $@)
 	$(MINIFY_JS) $< -o $@
 
 www/%.png: src/%.png
-	mkdir -p $(dir $@)
+	@mkdir -p $(dir $@)
 	$(FFMPEG) $(FFMPEG_FLAGS) -i $< -vf scale="'min(1000,iw)':-1" $@
 
 www/%: src/%
-	mkdir -p $(dir $@)
+	@mkdir -p $(dir $@)
 	cp $< $@
 
 clean:
@@ -126,6 +126,7 @@ info:
 	@echo "PANDOC_TEMPLATE         = $(PANDOC_TEMPLATE)"
 	@echo "PANDOC_FLAGS            = $(PANDOC_FLAGS)"
 	@echo "MARKDOWN_SOURCES        = $(MARKDOWN_SOURCES)"
+	@echo "BLOG_MARKDOWN_SOURCES   = $(BLOG_MARKDOWN_SOURCES)"
 	@echo "BLOG_INDEX_SOURCES      = $(BLOG_INDEX_SOURCES)"
 	@echo "STYLE_HIGHLIGHT_SOURCE  = $(STYLE_HIGHLIGHT_SOURCE)"
 	@echo "STYLE_SOURCES           = $(STYLE_SOURCES)"
@@ -137,6 +138,4 @@ info:
 	@echo "RESOURCE_DESTINATIONS   = $(RESOURCE_DESTINATIONS)"
 	@echo "SOURCES                 = $(SOURCES)"
 	@echo "DESTINATIONS            = $(DESTINATIONS)"
-
-
 
