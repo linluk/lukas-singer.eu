@@ -14,4 +14,18 @@ Blog
 - [ ] Wie löst man einen Zauberwürfel?
 - [ ] Derniere von "Alle meine Geister" von Rolf Kindler im BogenTheater
 - [ ] "Hallo Welt!" in vielen Sprachen
+- [ ] `fib()` in vielen Sprachen
+  - [ ] Part 0: Einführung
+  - [ ] Part 1..n: C#, C, python, asm, bash, batch, powershell
+    - [ ] Part 0: Einführung
+    - [ ] Part 1..n: C#, C, python, asm, bash, batch, powershell, ...
 - [ ] Generische Container in C
+- [ ] Brainf*ck
+- [ ] `sort()`
+
+Site
+----
+
+- [ ] [Issues auf GtiHub](https://github.com/linluk/lukas-singer.eu/issues) irgendwo/irgendwie einbinden
+- [ ] LICENSE file im Project Root CC für Content, WTFPL für Code
+- [ ] Einrückung der ersten Zeilen in Code-Blöcken fixen
