@@ -26,7 +26,7 @@ CREATE_BLOG_INDEX_FLAGS := --update
 
 PANDOC_VERSION          := $(shell $(PANDOC) --version | head -n 1)
 PANDOC_TEMPLATE         := template.html
-PANDOC_FLAGS            := --from=markdown \
+PANDOC_FLAGS            := --from=markdown+pipe_tables \
 						   --to=html5 \
 						   --table-of-contents \
 						   --lua-filter=tools/fix_links.lua \
