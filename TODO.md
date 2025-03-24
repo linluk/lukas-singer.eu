@@ -10,7 +10,7 @@ TODOs
 Blog
 ----
 
-- [ ] Vm Quellcode zur ausführbaren Datei
+- [ ] Vom Quellcode zur ausführbaren Datei
 - [ ] Wie löst man einen Zauberwürfel?
 - [ ] Derniere von "Alle meine Geister" von Rolf Kindler im BogenTheater
 - [ ] "Hallo Welt!" in vielen Sprachen
@@ -22,10 +22,11 @@ Blog
 - [ ] Generische Container in C
 - [ ] Brainf*ck
 - [ ] `sort()`
+- [ ] Public Errorscreens
 
 Site
 ----
 
-- [ ] [Issues auf GtiHub](https://github.com/linluk/lukas-singer.eu/issues) irgendwo/irgendwie einbinden
+- [ ] [Issues auf GitHub](https://github.com/linluk/lukas-singer.eu/issues) irgendwo/irgendwie einbinden
 - [ ] LICENSE file im Project Root CC für Content, WTFPL für Code
 - [ ] Einrückung der ersten Zeilen in Code-Blöcken fixen
