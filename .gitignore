@@ -8,3 +8,4 @@ src/highlight.css
 
 # secret files and folders
 secrets.sh
+__pycache__/

@@ -1,18 +1,19 @@
 #!/usr/bin/env python3
 
-import sys
 import os
 import socketserver
 
 from http.server import SimpleHTTPRequestHandler as Handler
 
-WWW = os.path.join(os.path.dirname(sys.argv[0]), 'www')
+from lib.ensure_project_root import ensure_project_root
+
 
 PORT = 8080
 
 if __name__ == '__main__':
-    os.chdir(WWW)
+    ensure_project_root()
+    os.chdir('www')
     with socketserver.TCPServer(("", PORT), Handler, True) as httpd:
-        print(f'Serving {WWW} on Port: {PORT}')
+        print(f'Serving {os.getcwd()} on Port: {PORT}')
         print(f'http://localhost:{PORT}')
         httpd.serve_forever()

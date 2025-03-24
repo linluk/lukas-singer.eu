@@ -23,6 +23,13 @@ import sys
 import os
 import datetime
 import yaml
+from lib.log import error, warning, info, debug
+from lib.ensure_project_root import ensure_project_root
+
+# import lib.log
+# lib.log.LOG_DEBUG = True
+# lib.log.LOG_INFO = True
+# lib.log.LOG_WARNING = True
 
 APP_NAME = 'blog.py'
 APP_VERSION = 'v0.2'
@@ -31,10 +38,6 @@ APP_NAME_VERSION = f'{APP_NAME} {APP_VERSION}'
 BLOG_PATH = 'src/blog/'
 
 KEEP_GOING_ON_YAML_ERROR = False
-
-LOG_DEBUG = False
-LOG_INFO = LOG_DEBUG or True
-LOG_WARNING = LOG_INFO or True
 
 
 def datetime2rfc2822(dt: datetime.datetime | None = None) -> str:
@@ -174,44 +177,6 @@ RSS_ITEM_TEMPLATE = """  <item>
     <author>Lukas Singer</author>
     <pubDate>{date}</pubDate>
   </item>"""
-
-
-def message_builder(message: str, *args, **kwargs) -> str:
-    return (f'{message}'
-            f'{", " if args else ""}{", ".join(map(str, args))}'
-            f'{", " if args else ""}'
-            f'{", ".join(f"{k}: {v}" for k, v in kwargs.items()) if kwargs is not None else ""}')  # noqa E501
-
-
-def error(code: int | None, message: str, *args, **kwargs) -> None:
-    print(f'[ERROR] {message_builder(message, *args, **kwargs)}',
-          file=sys.stderr)
-    if code is not None:
-        exit(code)
-
-
-def debug(message: str, *args, **kwargs) -> None:
-    if LOG_DEBUG:
-        print(f'[DEBUG] {message_builder(message, *args, **kwargs)}')
-
-
-def info(message: str, *args, **kwargs) -> None:
-    if LOG_INFO:
-        print(f'[INFO] {message_builder(message, *args, **kwargs)}')
-
-
-def warning(message: str, *args, **kwargs) -> None:
-    if LOG_WARNING:
-        print(f'[WARNING] {message_builder(message, *args, **kwargs)}')
-
-
-def ensure_project_root():
-    # Find and Change to Project Root (indicated by the presence of '.git')
-    while not os.path.isdir('.git'):
-        os.chdir('..')
-        if os.getcwd() == '/':
-            error(1, 'Project Root not found!')
-    debug(f"Project Root: '{os.getcwd()}'")
 
 
 def filename_compatible(name: str) -> str:
