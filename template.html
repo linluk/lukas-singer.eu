@@ -55,6 +55,7 @@
                 <ul>
                     <li $if(nav-blog-home)$class="selected"$endif$><a href="/blog/index.html"> &#x269b </a></li>
                     <li $if(nav-blog-tech)$class="selected"$endif$><a href="/blog/tech/index.html">Tech</a></li>
+                    <li $if(nav-blog-theater)$class="selected"$endif$><a href="/blog/theater/index.html">Theater</a></li>
                 </ul>
                 $endif$
             </nav>
@@ -65,7 +66,7 @@
         <div class="content">
             $if(blog-title)$
             <h1 class="blog-title">$blog-title$</h1>
-            <p class="blog-date">Published: $if(blog-date)$$blog-date$$else$unknown$endif$</p>
+            <p class="blog-date"><small>Published: $if(blog-date)$$blog-date$$else$unknown$endif$</small></p>
             $endif$
             $if(blog-changelog)$
             <hr>
