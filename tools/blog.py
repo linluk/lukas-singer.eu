@@ -321,8 +321,7 @@ def update_rss_files(category_headers: dict[str, list[dict]]):
                     title=f"{category} auf lukas-singer.eu",
                     link=f"https://lukas-singer.eu/blog/{category}",
                     description=f"Blog über {category} auf lukas-singer.eu",
-                    # TODO !!!
-                    items='\n'.join(all_items)))
+                    items='\n'.join(category_items[category])))
 
 
 def update_blog():
