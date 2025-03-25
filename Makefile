@@ -29,6 +29,7 @@ PANDOC_TEMPLATE         := template.html
 PANDOC_FLAGS            := --from=markdown+pipe_tables \
 						   --to=html5 \
 						   --table-of-contents \
+						   --mathml \
 						   --lua-filter=tools/fix_links.lua \
 						   --lua-filter=tools/obfuscate.lua \
 						   --variable pandoc-details="$(PANDOC_VERSION)" \
