@@ -27,6 +27,7 @@ Seit 21.6.2024 spielt das BogenTheater das Stück *Alle meine Geister*. Mit komm
 Wir entführen das Publikum in eine prächtige - vielleicht ein wenig in die Jahre gekommene - Burg. Dort wird der traditionelle Ahnentag für die Gräfin von Wetzelstein jährlich von ihren Bediensteten inszeniert, doch dieses Mal stehen Komplikationen bevor.
 
 Es spielen für euch (in order of appearence):
+
 - **Marco 'Cosso' Schmitzer:** der Reiseleiter und den einen oder anderen Geist
 - **Bruno Graber:** der Buttler Johann
 - **Lukas Singer:** der Neffen Adrian von Wetzelstein-Ohnthaler
