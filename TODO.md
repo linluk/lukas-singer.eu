@@ -12,11 +12,9 @@ Blog
 
 - [ ] Vom Quellcode zur ausführbaren Datei
 - [ ] Wie löst man einen Zauberwürfel?
-- [ ] Derniere von "Alle meine Geister" von Rolf Kindler im BogenTheater
+- [X] Derniere von "Alle meine Geister" von Rolf Kindler im BogenTheater
 - [ ] "Hallo Welt!" in vielen Sprachen
 - [ ] `fib()` in vielen Sprachen
-  - [ ] Part 0: Einführung
-  - [ ] Part 1..n: C#, C, python, asm, bash, batch, powershell
     - [ ] Part 0: Einführung
     - [ ] Part 1..n: C#, C, python, asm, bash, batch, powershell, ...
 - [ ] Generische Container in C
