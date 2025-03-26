@@ -14,7 +14,7 @@ nav-schule: true
 nav-schule-rsa: true
 ---
 
-Das *RSA-Kryptosystem* ist ist ein Asymmetrisches Verfahren in der Kryptographie.
+Das *RSA-Kryptosystem* ist ein Asymmetrisches Verfahren in der Kryptographie.
 Benannt ist RSA nach den drei Mathematikern Rivest, Shamir, Adleman.
 Kryptosystem bedeutet, dass es sich nicht nur zur Verschlüsselung, sondern auch zur Validierung von Nachrichten eignet.
 Asymmetrisches Verfahren bedeutet, dass es ein Schlüsselpaar, also zwei verschiedene Schlüssel gibt.
@@ -45,17 +45,17 @@ Man nimmt die erste Zahl, die noch nicht gestrichen ist. Diese ist eine Primzahl
 Dann streicht man alle vielfachen dieser Zahl und beginnt wieder von vorne mit der nächsten nicht gestrichene Zahl usw.
 
 ~~~python
-  def eratosthenes(n=100):
-      e = set(range(2, n))
-      p = 0
-      while len(e) > 0:
-          p = min(e)
-          e.discard(p)
-          for i in range(2, 1 + n // p):
-              e.discard(p * i)
-          yield p
-  primes = list(eratosthenes(1000))
-  print(primes[-10:])
+def eratosthenes(n=100):
+    e = set(range(2, n))
+    p = 0
+    while len(e) > 0:
+        p = min(e)
+        e.discard(p)
+        for i in range(2, 1 + n // p):
+            e.discard(p * i)
+        yield p
+primes = list(eratosthenes(1000))
+print(primes[-10:])
 ~~~
 
 ~~~
@@ -121,28 +121,28 @@ Als Linearkombination gilt:
 $$ ggT(23, 17) = 1 = 23 \cdot 3 + 17 \cdot - 4 $$
 
 ~~~python
-  def euklid(a, b):
-      i = 0
-      a = {i: a}
-      b = {i: b}
-      r = {i: a[i] % b[i]}
-      while r[i] != 0:
-          i += 1
-          a[i] = b[i - 1]
-          b[i] = r[i - 1]
-          r[i] = a[i] % b[i]
-      g = b[i]
-      x = {i: 0}
-      y = {i: 1}
-      while i > 0:
-          i -= 1
-          x[i] = y[i + 1]
-          y[i] = (g - a[i] * x[i]) // b[i]
-      return g, x[0], y[0]
+def euklid(a, b):
+    i = 0
+    a = {i: a}
+    b = {i: b}
+    r = {i: a[i] % b[i]}
+    while r[i] != 0:
+        i += 1
+        a[i] = b[i - 1]
+        b[i] = r[i - 1]
+        r[i] = a[i] % b[i]
+    g = b[i]
+    x = {i: 0}
+    y = {i: 1}
+    while i > 0:
+        i -= 1
+        x[i] = y[i + 1]
+        y[i] = (g - a[i] * x[i]) // b[i]
+    return g, x[0], y[0]
 
-  a, b = 23, 17
-  ggT, x, y = euklid(a, b)
-  print(f'ggT({a}, {b}) = {ggT} = {a} * {x} + {b} * {y}')
+a, b = 23, 17
+ggT, x, y = euklid(a, b)
+print(f'ggT({a}, {b}) = {ggT} = {a} * {x} + {b} * {y}')
 ~~~
 
 ~~~
@@ -191,8 +191,8 @@ print(f'p = {p}, q = {q}')
 $n$ ist das *RSA-Modul*.
 
 ~~~python
-     n = p * q
-     print(f'n = {n}')
+n = p * q
+print(f'n = {n}')
 ~~~
 
 ~~~
@@ -229,7 +229,7 @@ print(f'e = {e}')
 
 **5. Die beiden Zahlen $e$ und $n$ sind der öffentliche Schlüssel (oder public Key).**
 
-$(e, n)$ kann veröffentlicht werden.  
+$(e, n)$ kann veröffentlicht werden.<br>
 Alles andere $(p, q, \phi(n))$ muss geheim bleiben!
 
 ~~~python
@@ -243,7 +243,7 @@ print(f'public key = {public_key}')
 
 **6. Bestimme $d$ damit $ggT(e, \phi(n)) = 1 = e \cdot d + \phi(n) \cdot k$ gilt.**
 
-$k$ wird nicht benötigt.  
+$k$ wird nicht benötigt.<br>
 $d$ ist der geheime (oder private) Exponent.
 
 ~~~python
@@ -259,7 +259,7 @@ print(f'd = {d}')
 
 **7. Die beiden Zahlen $d$ und $n$ sind der geheime Schlüssel (oder private Key).**
 
-$(d, n)$ muss geheim bleiben.  
+$(d, n)$ muss geheim bleiben.<br>
 Alles außer $(e, n)$ und $(d, n)$ sollte aus Sicherheitsgründen gelöscht werden.
 
 ~~~python
@@ -270,7 +270,7 @@ print(f'private key = {private_key}')
 ~~~
  private key = (124615, 703751)
 ~~~
-   
+
 Eine Nachricht verschlüsseln
 ----------------------------
 
@@ -281,7 +281,7 @@ wobei $G$ der Geheimtext und $K$ der Klartext sind.
 ~~~python
 # crypt ver- und entschlüsselt.
 # k  ist ein schlüsselpaar der form (e, n) bzw. (d, n)
-# m  ist die message (Nachricht)                            
+# m  ist die message (Nachricht)
 crypt = lambda k, m: (m ** k[0]) % k[1]
 
 K = 420

@@ -113,19 +113,23 @@ div.cookie-hint {
 div.cookie-hint div button {
     margin-left: 10px;
 }
+/*
 code {
+    text-indent: 0px;
     white-space: pre;
     background-color: #333;
     padding-left: 2px;
     padding-right: 2px;
-}
+}*/
 pre {
+    text-indent: 0px;
     padding: 7px 7px 7px 7px;
     background-color: #333;
     border-color: #777;
     border-style: solid;
     border-width: 2px;
-    overflow: auto;
+    font-size: 1.3em;
+    /*overflow: auto;*/
 }
 footer ul {
     list-style-type: none;
