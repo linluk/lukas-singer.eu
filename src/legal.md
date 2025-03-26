@@ -48,6 +48,16 @@ I am not responsibile for the accuracy, legality or content of external sites
 or for their subsequent links. Please contact the external site for answers to
 questions regarding its content.
 
+3rd party
+---------
+
+Yes this website uses 3rd party content (f.e.: embedded content like \<iframe\>)
+
+All 3rd party content is provided as a convenience, they do not reflect my opinion.
+I am not responsibile for the accuracy, legality or content provided by a 3rd party.
+
+Please contact the 3rd party content provider for answers to questions regarding its content.
+
 cookies
 -------
 
