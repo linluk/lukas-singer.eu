@@ -1,0 +1,63 @@
+#
+# content of this file will be ignored in Makefile
+#
+# THE PROBLEM:
+#     my Makefile generates targets based on source files.
+#     sometimes i just want to work on some experiments or
+#     have files which are in WIP for a longer time.
+#     during such periods i still want to be able to publish
+#     my site with a simple:
+#         '$ make clean && make && ./tools/scp.sh'
+#     in short, make should only generate files i really want.
+#
+# THE IDEAS:
+#     1. keep track of files i really want.
+#        downside is, that i have to clutter a file (or my
+#        Makefile) with lots of entries and update it every
+#        time i want to add something (blog post, etc.)
+#        upside is, it may be safer and more clear and
+#        prevents mis-publishing of unwanted files.
+#     2. keep track of files i don't want.
+#        up- and downsides are vice versa of idea 1.
+#
+# THE DECISION:
+#     makeignore. (this file).
+#     why?
+#     1. just because it was my first idea (even if i
+#        numbered it 2.) and i want to "implement" it.
+#     2. right now it seems easier and less work to add this
+#        feature than to rewrite the entire Makefile.
+#     3. i am lazy, see 2.
+#
+# NOT TO SELF:
+#     don't stick to this decision if it turns out to be
+#     a bad idea or impractically.
+#
+# HOW IT WORKS:
+#     lines starting with # are ignored (treated as comment).
+#     blank lines will be ignored as well.
+#     lines with content will be passed as the pattern to the
+#     function 'filter-out', for "every" "generated" list
+#     in the Makefile.
+#     for details about 'filter-out' see:
+#       https://www.gnu.org/software/make/manual/html_node/Text-Functions.html#index-filter_002dout
+#
+# INSIDE THE MAKEFILE:
+#     # get the pattern list from 'makeignore'
+#     # exclude (-v) the extended regex (-E)
+#     # '^\s*#'  lines starting with an optional sequence of
+#     #          spaces followed by a '#'
+#     # '^\s*'   lines containing only spaces or nothing
+#     # '^\s*#|^\s*$' escaped for $(shell ..) in make
+#     #    -->  '^\s*\#|^\s*$$'
+#     #         # -> \#   (make comment marker)
+#     #         $ -> $$   (make variable)
+#     IGNORE := $(shell grep -vE '^\s*\#|^\s*$$' makeignore)
+#
+#     # remove elements to ignore from LIST
+#     LIST   := $(filter-out $(IGNORE),$(LIST))
+#
+
+
+# error screen collection is still experimental
+src/errors/%

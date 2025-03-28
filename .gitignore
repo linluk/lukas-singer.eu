@@ -1,6 +1,9 @@
 # destination folder
 www/
 
+# tmp folder
+tmp/
+
 # generated sources
 src/blog/**/index.md
 src/blog/**/rss.xml
@@ -8,4 +11,6 @@ src/highlight.css
 
 # secret files and folders
 secrets.sh
+
+# python stuff
 __pycache__/

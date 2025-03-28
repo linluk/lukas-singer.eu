@@ -40,22 +40,34 @@ PANDOC_FLAGS            := --from=markdown+pipe_tables \
 FFMPEG_FLAGS            := -hide_banner \
 						   -loglevel error
 
+# see  makeignore  file for details
+# have to escape $ with $$
+# have to escape # with \#
+IGNORE                  := $(shell grep -vE '^\s*\#|^\s*$$' makeignore)
+
 # find all *.md files in src/ except blog files (files under src/blog) called index.md in src/blog
 MARKDOWN_SOURCES        := $(shell find src/ -type f \( -name "*.md" -a ! -regex "src\/blog\/.*\.md" \))
+MARKDOWN_SOURCES        := $(filter-out $(IGNORE),$(MARKDOWN_SOURCES))
 # find all *.md files in src/blog except files called index.md in src/blog
 BLOG_MARKDOWN_SOURCES   := $(shell find src/blog -type f \( -name "*.md" -a ! -regex "src\/blog\/.*index\.md" \))
+BLOG_MARKDOWN_SOURCES   := $(filter-out $(IGNORE),$(BLOG_MARKDOWN_SOURCES))
 # get index.md for each directory in src/blog does not matter if it exists or not
 # 'find src/blog -type d' will give all subdirectories of AND src/blog itself.
 BLOG_INDEX_SOURCES      := $(foreach blog_dir,$(shell find src/blog -type d),$(blog_dir)/index.md)
+BLOG_INDEX_SOURCES      := $(filter-out $(IGNORE),$(BLOG_INDEX_SOURCES))
 # 
 RSS_SOURCES             := $(foreach blog_dir,$(shell find src/blog -type d),$(blog_dir)/rss.xml)
+RSS_SOURCES             := $(filter-out $(IGNORE),$(RSS_SOURCES))
 STYLE_HIGHLIGHT_SOURCE  := src/highlight.css
 # 'find src/ -type f \( -name "*.css" -a ! -regex "src\/highlight\.css"' will get us all '*.css' files 
 # except 'src/highlight.css' which may or may not exists, so wee add it manually.
 # thats how we avoid to duplicate it in $STYLE_SOURCES
 STYLE_SOURCES           := $(shell find src/ -type f \( -name "*.css" -a ! -regex "src\/highlight\.css" \)) $(STYLE_HIGHLIGHT_SOURCE)
+STYLE_SOURCES           := $(filter-out $(IGNORE),$(STYLE_SOURCES))
 SCRIPT_SOURCES          := $(shell find src/ -type f -name "*.js")
+SCRIPT_SOURCES          := $(filter-out $(IGNORE),$(SCRIPT_SOURCES))
 RESOURCE_SOURCES        := $(shell find src/ -type f \( -name "*.pdf" -o -name "*.png" \))
+RESOURCE_SOURCES        := $(filter-out $(IGNORE),$(RESOURCE_SOURCES))
 
 HTML_DESTINATIONS       := $(patsubst src/%,www/%,$(patsubst %.md,%.html,$(MARKDOWN_SOURCES) $(BLOG_MARKDOWN_SOURCES) $(BLOG_INDEX_SOURCES)))
 STYLE_DESTINATIONS      := $(patsubst src/%,www/%,$(STYLE_SOURCES))
@@ -133,6 +145,7 @@ info:
 	@echo "STYLE_SOURCES           = $(STYLE_SOURCES)"
 	@echo "SCRIPT_SOURCES          = $(SCRIPT_SOURCES)"
 	@echo "RESOURCE_SOURCES        = $(RESOURCE_SOURCES)"
+	@echo "IGNORE                  = $(IGNORE)"
 	@echo "HTML_DESTINATIONS       = $(HTML_DESTINATIONS)"
 	@echo "STYLE_DESTINATIONS      = $(STYLE_DESTINATIONS)"
 	@echo "SCRIPT_DESTINATIONS     = $(SCRIPT_DESTINATIONS)"
