@@ -28,3 +28,4 @@ Site
 - [ ] [Issues auf GitHub](https://github.com/linluk/lukas-singer.eu/issues) irgendwo/irgendwie einbinden
 - [ ] LICENSE file im Project Root CC für Content, WTFPL für Code
 - [X] Einrückung der ersten Zeilen in Code-Blöcken fixen
+- [ ] `make info` soll auf durch `makeignore` ignorierte files hinweisen
