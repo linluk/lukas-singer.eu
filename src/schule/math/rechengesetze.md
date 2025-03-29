@@ -6,15 +6,15 @@ keywords:
 - mathematik
 - math
 - ama
+- rechengesetze
+- kommutativgesetz
+- assoziativgesetz
+- distributivgesetz
 description: Mathematik/Basics/Rechengesetze Kommutativ-, Assoziativ- und Distributivgesetz
 use-toc: false
 nav-schule: true
 nav-schule-math: true
 ---
-
-<center>
-##### Diese Seite ist Work in Progress!
-</center>
 
 
 # Mathematik Rechengesetze
@@ -55,8 +55,8 @@ $$ \frac{9}{3} \neq \frac{3}{9} $$
 $$ 3 \neq \frac{1}{3} $$
 $$ 3 \neq 0{,}\overline{3} $$
 
-> **Merke:**
-> Bei Addition und Multiplikation dürfen die Summanden bzw. Faktoren vertauscht werden.
+> **Merke:**  
+> Bei Addition und Multiplikation dürfen die Summanden bzw. Faktoren vertauscht werden.  
 > Bei Subtraktion und Division dürfen die Opperanden _nicht_ vertauscht werden!
 
 ---
@@ -102,4 +102,25 @@ $$ 0{,}\overline{6} \neq 6 $$
 
 ## Das Distributivgesetz
 
-...
+Das Distributivgesetz beschreibt einerseits, wie man durch **Herausheben** *Summen* in *Produkte* umwandeln
+und andererseit wie man durch **Ausmultiplizieren** *Klammern auflösen* kann.
+
+### Beispiele:
+
+$$ a \cdot b + a \cdot c = a ( b + c ) $$
+
+$$ 3a + 3b = 3 \cdot (a + b) $$
+
+$$ 7x + 21y = 7 \cdot (x + 3y) $$
+
+$$ a + ab = a \cdot (1 + b) $$
+
+$$ \frac{ax + ay}{z} = a\frac{x + y}{z} $$
+
+$$ x^2 + x = x \cdot (x + 1) $$
+
+$$ \dots $$
+
+
+
+

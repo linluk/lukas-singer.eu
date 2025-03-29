@@ -26,3 +26,7 @@ In diesem Bereich findet ihr Erklärungen, Beispiele, Übungen, Unterlagen und s
 - [Begriffe](begriffe.md): Variablen, Terme, Gleichungen, Formeln, ...
 - [Grundrechnungsarten](grundrechnungsarten.md): $+$, $-$, $\cdot$, $\frac{\cdot}{\cdot}$, $($ und $)$
 - [Rechengesetze](rechengesetze.md): Kommutiativgesetz, Assoziativgesetz und Distributivgesetz
+
+## Zahlensysteme
+
+...
