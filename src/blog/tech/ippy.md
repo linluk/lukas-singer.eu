@@ -270,7 +270,11 @@ Um das Programm ausführen zu können, ist Python3 notwendig.
 
 <br>
 
-<center> **Danke fürs Lesen und viel Spaß mit `ippy`** </center>
+<center> **Danke fürs Lesen und viel Spaß mit `ippy`.** </center>
+
+<br>
+
+<center> **Special Thanks an die Schülerinnen und Schüler der Klasse 1 APEC im 3. Lehrgang 2024/25!** </center>
 
 <br>
 
