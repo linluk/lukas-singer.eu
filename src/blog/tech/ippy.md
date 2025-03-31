@@ -27,6 +27,16 @@ blog-changelog:
 *Heute ging es im IT-Laborunterricht um IP-Adressen, IP-Analyse, CIDR, usw.
 kurzerhand haben die Klasse und ich dann ein kleines Tool entwickelt, welches die IP-Analyse für uns durchführt.*
 
+<br>
+
+> **TL;DR**  
+> Ein kleines Tool in Python zur IP-Analyse, entwickelt mit und für die Klasse 1 APEC im 3. LG 2024/25 an der tfbs-eke.  
+> Sourcecode unter [github.com/eke-singer/ippy](https://github.com/eke-singer/ippy).
+
+<br>
+
+---
+
 ## IP-Analyse
 
 Zum Auffrischen bzw. für ein bisschen Kontext:  
@@ -50,6 +60,8 @@ Zusätzlich haben wir noch ein Suffix "erfunden", in diesem Fall $/20$.
 | ![Tafelbild zur IP-Analyse](/images/blog/tech/ippy/drawing.png) |
 |:---:|
 | <small>Tafelbild zur IP-Analyse von `142.250.184.196 /20`</small> |
+
+---
 
 ## Code Projekt
 
@@ -82,7 +94,7 @@ Schnell ist unser *Hello-World*-artiges Grundgerüst geschrieben von dem aus wir
 > sein System "in Ordnung" bringen.
 
 Ausführbar gemacht und ausprobiert:
-```sh
+```plain
 $ chmod u+x ippy
 $ ./ippy
  ippy is a small tool to analyze ip adresses
@@ -115,7 +127,7 @@ if __name__ == '__main__':
 > unter Windows mit `echo %errorlevel%` einsehen.
 
 Das Programm wird natürlich wieder ausprobiert:
-```sh
+```plain
 $ ./ippy test1 test2
 sys.argv=['./ippy', 'test1', 'test2']
 $ echo $?
@@ -126,7 +138,6 @@ $ ./ippy
         ippy  IP  SUFFIX
 $ echo $?
 1
-$
 ```
 
 Soweit so gut! Als Nächstes müssen wir die Eingaben validieren und in einen geeigneten Datentyp umwandeln.
@@ -244,6 +255,8 @@ def ip_to_str(ip: int) -> str:
 
 Hier wird jedes Oktett (8-Bit-Gruppe) in einen String umgewandelt und diese mittels `'.'.join()` durch Punkte verbunden.
 
+---
+
 ## Das Fertige Programm
 
 Ich war so frei und hab das Programm nach Unterrichtsende dann noch ein bisschen erweitert.
@@ -268,6 +281,102 @@ Um das Programm ausführen zu können, ist Python3 notwendig.
     Zum Ausführen muss `ippy` an die `python3.exe` übergeben werden,
     das könnte beisielsweise so `C:\Python3\python3.exe C:\Code\ippy\ippy` aussehen.
 
+### Ein paar Beispiele
+
+Wie sieht das Fertige Programm nun in Action aus?
+
+#### `-h` der Hilfetext
+
+```plain
+$ ./ippy -h
+ippy is a small python tool to perform ip analysis.
+usage:
+    ./ippy  [ARG]  IP  SUFFIX
+
+options:
+IP       the ip address to analyze in the format
+         A.B.C.D where A, B, C and D must be integers
+         greater or equalt to 0 and less than 256.
+
+SUFFIX   the cidr suffix for the ip address.
+         it must be an integer greater or equal to 0
+         and less than 32.
+
+ARG      optional argument(s). can be none, one or more
+         of the following:
+
+    -h   prints this help text and exits without error.
+
+    -b   prints ip analysis additionally in binary
+
+    -x   prints ip analysis additionally in hexadecimal
+
+examples:
+    ./ippy  192.168.42.23  24
+
+    ./ippy  -b  172.16.31.45  16
+
+license:
+    (C) Lukas Singer 2025
+    ippy is free open source software provided under WTFPL
+    see:  https://www.wtfpl.net/ for details.
+
+ippy was developed by lukas singer on 2025-03-31 for and
+with 1APEC 2024/25 @ tfbs-eke.
+visit https://www.eke.at and https://www.lukas-singer.eu
+
+```
+
+#### Die IP aus dem Unterrichtsbeispiel
+
+```plain
+$ ./ippy 142.250.184.196 20
+IP / Suffix = 142.250.184.196 / 20
+SNM         = 255.255.240.0
+NetID       = 142.250.176.0
+BCA         = 142.250.191.255
+Host Range  = 142.250.176.1 bis 142.250.191.254
+# of Hosts  = 2 ^ (32 - 20) - 2 = 4094
+```
+
+#### Ausgabe zusätzlich in Binär
+
+```plain
+$ ./ippy -b 192.168.42.23 24
+IP / Suffix = 192.168.42.23 / 24
+SNM         = 255.255.255.0
+NetID       = 192.168.42.0
+BCA         = 192.168.42.255
+Host Range  = 192.168.42.1 bis 192.168.42.254
+# of Hosts  = 2 ^ (32 - 24) - 2 = 254
+in binary:
+    IP    = 0b11000000.0b10101000.0b00101010.0b00010111
+    SNM   = 0b11111111.0b11111111.0b11111111.0b00000000
+    NetID = 0b11000000.0b10101000.0b00101010.0b00000000
+    BCA   = 0b11000000.0b10101000.0b00101010.0b11111111
+```
+
+#### Ausgabe zusätzlich in Hexadezimal
+
+```plain
+$ ./ippy -x 10.0.10.5 30
+IP / Suffix = 10.0.10.5 / 30
+SNM         = 255.255.255.252
+NetID       = 10.0.10.4
+BCA         = 10.0.10.7
+Host Range  = 10.0.10.5 bis 10.0.10.6
+# of Hosts  = 2 ^ (32 - 30) - 2 = 2
+in hexadecimal:
+    IP    = 0x0A.0x00.0x0A.0x05
+    SNM   = 0xFF.0xFF.0xFF.0xFC
+    NetID = 0x0A.0x00.0x0A.0x04
+    BCA   = 0x0A.0x00.0x0A.0x07
+```
+
+<br>
+
+---
+
 <br>
 
 <center> **Danke fürs Lesen und viel Spaß mit `ippy`.** </center>
@@ -279,6 +388,8 @@ Um das Programm ausführen zu können, ist Python3 notwendig.
 <br>
 
 <br>
+
+---
 
 <small>
 Der Code zum Stand 31.3.2025 ist hier:
