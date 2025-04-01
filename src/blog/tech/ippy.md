@@ -2,21 +2,16 @@
 title: ippy - IP-Analyse in Python
 lang: de
 keywords:
-- blog
-- tech
 - ippy
 - ip analyse
 - cidr
-- subnetting
-- logic
 - itl
 - tfbs-eke
-- eke
+- schule
 - code
 - python
-- python3
 - github
-description: ippy ist ein kleines Werkzeug, geschrieben in Python, für und mit der Klasse 1APEC 2024/25 an der Tiroler Fachberufsschule für Elektrotechnik, Kommunikation und Elektronik
+description: ippy ist ein kleines Werkzeug zur Analyse von IP-Adressen, geschrieben in Python, für und mit der Klasse 1APEC 2024/25 an der Tiroler Fachberufsschule für Elektrotechnik, Kommunikation und Elektronik
 blog-title: ippy - IP-Analyse in Python
 blog-date: 2025-03-31
 nav-blog: true
@@ -30,7 +25,9 @@ kurzerhand haben die Klasse und ich dann ein kleines Tool entwickelt, welches di
 <br>
 
 > **TL;DR**  
-> Ein kleines Tool in Python zur IP-Analyse, entwickelt mit und für die Klasse 1 APEC im 3. LG 2024/25 an der tfbs-eke.  
+> **`ippy`** ist ein kleines Werkzeug zur Analyse von IP-Adressen, geschrieben in Python,
+> für und mit der Klasse 1APEC im 3. Lehrgang 2024/25 an der Tiroler Fachberufsschule
+> für Elektrotechnik, Kommunikation und Elektronik  
 > Sourcecode unter [github.com/eke-singer/ippy](https://github.com/eke-singer/ippy).
 
 <br>
@@ -40,9 +37,9 @@ kurzerhand haben die Klasse und ich dann ein kleines Tool entwickelt, welches di
 ## IP-Analyse
 
 Zum Auffrischen bzw. für ein bisschen Kontext:  
-Wir analysierten die eine IP-Adresse, auf Schüler:innenwunsch hin die von Google.
+Wir analysierten eine IP-Adresse; auf Schüler:innenwunsch hin die von Google.
 
-In die Kommandzeile `nslookup google.com` eingegeben und wir bekamen diese Informationen:
+In die Kommandzeile `nslookup google.com` eingegeben, bekamen wir diese Informationen:
 
 ```plain
 Server:		192.168.0.1
@@ -63,10 +60,10 @@ Zusätzlich haben wir noch ein Suffix "erfunden", in diesem Fall $/20$.
 
 ---
 
-## Code Projekt
+## Coding Projekt
 
 Das ganze "bitweise UND-Verknüpfen", "invertieren", ... schreit gerade zu danach in einem kleinen
-Code Projekt umgesetzt zu werden.
+Coding Projekt umgesetzt zu werden.
 
 ### Hello World!
 
@@ -91,7 +88,7 @@ Schnell ist unser *Hello-World*-artiges Grundgerüst geschrieben von dem aus wir
 > sondern weil sich dadurch einfach und schnell feststellen lässt, ob die Programmier- und
 > Ausführungsumgebung richtig konfiguriert ist.  
 > Würde *Hello World* nicht funktionieren, macht es keinen Sinn weiter zu machen, man müsste vorher
-> sein System "in Ordnung" bringen.
+> sein Entwicklungssystem "in Ordnung" bringen.
 
 Ausführbar gemacht und ausprobiert:
 ```plain
@@ -169,21 +166,33 @@ def str_to_ip(s: str) -> int | None:
 Schritt für Schritt:
 
 1. Mit `parts = s.split('.')` teilen wir die Eingabe bei den Punkten auf
+
 1. Mit `if len(parts) != 4: ...` wird geprüft, ob die Eingabe aus vier Elementen bestand,
    wenn das nicht so ist, wird `None` zurückgegeben, um einen Fehler zu signalisieren.
+
 1. `if not all(lambda x: x.isnumeric() and (0 <= int(x) < 256) for x in parts): ...` betrachten wir Schritt für Schritt:
+
     1. `all( ... for x in parts)` bedeutet, dass wir die folgenden Prüfungen für jeden der 4 Elemente machen,
         die hier `x` genannt werden.
+
     1. `x.isnumeric()` prüft, ob es sich um eine Zahl handelt.
+
     1. `(0 <= int(x) < 256)` prüft, ob diese Zahl größer-gleich $0$ und kleiner $256$ ist.
+
     1. `not` negiert das Ergebnis.  
        Ist also auch nur ein Teil der IP ungültig, gibt die Funktion `None` zurück.
+
 1. `ip = 0` initialisiert eine Integer-Variable.
+
 1. `for part in parts: ...` geht nun alle Teile der IP der Reihe nach durch.  
     In jedem Schritt wird:
+
     1. Mit `ip <<= 8` der bisherige wert der IP-Adresse um $8$ Bit nach links geshiftet.
+
     1. Mit `ip |= int(part)` der aktuelle Teil der IP-Adresse durch ODER-Verknüpfung gesetzt.
-1. `return ip` gibt die IP-Adresse jetzt als Integer zurück.
+
+1. `return ip` gibt die IP-Adresse jetzt als Integer zurück.  
+
 
 Hier nochmal ein Versuch den Algorithmus darzustellen:
 ```python
@@ -199,10 +208,6 @@ ip |= part    # jetzt wird  ip  mit  part  ODER-verknüpft
 # dann sieht  ip  in Binär jetzt so aus:
 # ip   = 0b_0000_0000__0000_0000__0010_1010__0001_0111
 ```
-
-Das sieht jetzt doch irgendwie ganz kompliziert aus, oder nicht?
-
-Keine Sorge, das Schöne daran ist, dass alles Weitere ganz einfach ist!
 
 ### Suffix validieren und umwandeln
 
@@ -225,10 +230,10 @@ for _ in range(suffix - 1):
 Und jetzt nur noch die bereits am Tafelbild gezeigten Regeln anwenden:
 
 ```python
-netid = ip & snm
-bca = ip | ~snm
-host_range = (netid + 1, bca - 1)
-host_count = 2 ** (32 - suffix) - 2
+netid = ip & snm                       # NetID = IP bitwise-OR Subnetmask
+bca = ip | ~snm                        # BCA = IP bitwise-AND inverted Subnetmask
+host_range = (netid + 1, bca - 1)      # Hostrange = from (NetID + 1) to (BCA - 1)
+host_count = 2 ** (32 - suffix) - 2    # Two less than Two to the power of 32 minus Suffix
 ```
 und Fertig!
 
@@ -236,7 +241,7 @@ Fast.
 
 ### IP, NetID, BCA, ... wieder als String darstellen
 
-Die "interne" Darstellung muss für eine Sinnvolle Ausgabe natürlich noch in representative String
+Die "interne" Darstellung muss für eine sinnvolle Ausgabe natürlich noch in representative Strings
 umgewandelt werden:
 ```python
 def ip_to_str(ip: int) -> str:
@@ -255,6 +260,8 @@ def ip_to_str(ip: int) -> str:
 
 Hier wird jedes Oktett (8-Bit-Gruppe) in einen String umgewandelt und diese mittels `'.'.join()` durch Punkte verbunden.
 
+`ip_to_str()` kann dann für alle berechneten Adressen (BCA, NetID, SNM, ...) verwendet werden.
+
 ---
 
 ## Das Fertige Programm
@@ -266,16 +273,17 @@ bisschen aufgeräumt.
 
 > **Disclaimer:**  
 > Wie jede Software wird auch diese Software Fehler haben!  
-> Vieles lässt sich bestimmt auch besser/anders/eleganter/... machen, ich habe versucht, einen
-> Kommpromiss aus Lesbarkeit, "Eleganz" und "Pythonicität" zu erriechen.
+> Vieles lässt sich bestimmt auch besser/anders/eleganter/... lösen, ich habe versucht, einen
+> Kommpromiss aus Lesbarkeit, "Eleganz" und "Pythonicität" zu erreichen.
 
 Der aktuelle Code ist unter [github.com/eke-singer/ippy](https://github.com/eke-singer/ippy) auf GitHub zu finden.
 
 Um das Programm ausführen zu können, ist Python3 notwendig.
 
-  - Unter Linux sollte es in fast allen Distributionen bereits installiert sein
-    (oder zumindest über die Paketquellen verfügbar sein).  
+  - Unter Linux oder MacOS sollte Python bereits installiert
+    (oder zumindest in den Paketquellen verfügbar) sein.  
     Zum Ausführen genügt es den Befehl `./ippy` in dem Verzeichnis, in dem der Sourcecode liegt, einzugeben.
+
   - Unter Windows muss Python wahrscheinlich erst installiert werden.  
     Am besten über die [offizielle Seite](https://www.python.org/).  
     Zum Ausführen muss `ippy` an die `python3.exe` übergeben werden,
@@ -392,7 +400,7 @@ in hexadecimal:
 ---
 
 <small>
-Der Code zum Stand 31.3.2025 ist hier:
+Der Quellcode zum Stand 31.3.2025 ist hier:
 
 ```python
 #!/usr/bin/env python3
