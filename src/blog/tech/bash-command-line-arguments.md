@@ -182,3 +182,4 @@ echo "\${\*: -1} = ${*: -1}"
 echo "\${\*: 1:\$#-1} = ${*: 1:$#-1}"
 ```
 </small>
+und als [GitHub Gist](https://gist.github.com/linluk/0a93db664b53c4515ba4b08e182d0d93).
