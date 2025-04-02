@@ -19,7 +19,7 @@ Wer gleich reservieren will, kann das [hier](https://www.bogentheater.at/spielpl
 
 Seit 21.6.2024 spielt das BogenTheater das Stück *Alle meine Geister*. Mit kommendem Freitag haben wir das Stück dann 10 mal für unser Publikum gespielt.
 
-| ![Das Team von "Alle meine Geister"](/images/blog/theater/geister/team.png) |
+| ![Das Team von "Alle meine Geister"](/images/blog/theater/geister/team.webp) |
 |:---:|
 | <small><small>Foto &copy; Bernhard Stolz</small></small> |
 | <small>Das Team von "Alle meine Geister"</small> |
@@ -36,7 +36,7 @@ Es spielen für euch (in order of appearence):
 
 Regie führte Stephanie Senn mit assistenz durch Priska Zimmermann. Für Ton und Licht ist Patricia 'Phini' Hohlrieder zuständig.
 
-| [![Marco 'Cosso' Schmitzer](/images/blog/theater/geister/marco.png)](/images/blog/theater/geister/marco.png) | [![Bruno Graber](/images/blog/theater/geister/bruno.png)](/images/blog/theater/geister/bruno.png) | [![Lukas Singer](/images/blog/theater/geister/lukas.png)](/images/blog/theater/geister/lukas.png) | [![Magdalena Nistl](/images/blog/theater/geister/leni.png)](/images/blog/theater/geister/leni.png) | [![Sandra Klein](/images/blog/theater/geister/sandra.png)](/images/blog/theater/geister/sandra.png) |
+| [![Marco 'Cosso' Schmitzer](/images/blog/theater/geister/marco.webp)](/images/blog/theater/geister/marco.webp) | [![Bruno Graber](/images/blog/theater/geister/bruno.webp)](/images/blog/theater/geister/bruno.webp) | [![Lukas Singer](/images/blog/theater/geister/lukas.webp)](/images/blog/theater/geister/lukas.webp) | [![Magdalena Nistl](/images/blog/theater/geister/leni.webp)](/images/blog/theater/geister/leni.webp) | [![Sandra Klein](/images/blog/theater/geister/sandra.webp)](/images/blog/theater/geister/sandra.webp) |
 |:---:|:---:|:---:|:---:|:---:|
 | <small><small>Foto &copy; Bernhard Stolz</small></small> | <small><small>Foto &copy; Bernhard Stolz</small></small> | <small><small>Foto &copy; Bernhard Stolz</small></small> | <small><small>Foto &copy; Bernhard Stolz</small></small> | <small><small>Foto &copy; Bernhard Stolz</small></small> |
 | <small>Marco</small> | <small>Bruno</small> | <small>Lukas</small> | <small>Leni</small> | <small>Sandra</small> |

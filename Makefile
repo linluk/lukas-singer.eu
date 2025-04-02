@@ -66,7 +66,7 @@ STYLE_SOURCES           := $(shell find src/ -type f \( -name "*.css" -a ! -rege
 STYLE_SOURCES           := $(filter-out $(IGNORE),$(STYLE_SOURCES))
 SCRIPT_SOURCES          := $(shell find src/ -type f -name "*.js")
 SCRIPT_SOURCES          := $(filter-out $(IGNORE),$(SCRIPT_SOURCES))
-RESOURCE_SOURCES        := $(shell find src/ -type f \( -name "*.pdf" -o -name "*.png" \))
+RESOURCE_SOURCES        := $(shell find src/ -type f \( -name "*.pdf" -o -name "*.png" -o -name "*.webp" \))
 RESOURCE_SOURCES        := $(filter-out $(IGNORE),$(RESOURCE_SOURCES))
 
 HTML_DESTINATIONS       := $(patsubst src/%,www/%,$(patsubst %.md,%.html,$(MARKDOWN_SOURCES) $(BLOG_MARKDOWN_SOURCES) $(BLOG_INDEX_SOURCES)))
@@ -111,6 +111,10 @@ www/%.js: src/%.js
 	$(MINIFY_JS) $< -o $@
 
 www/%.png: src/%.png
+	@mkdir -p $(dir $@)
+	$(FFMPEG) $(FFMPEG_FLAGS) -i $< -vf scale="'min(1000,iw)':-1" $@
+
+www/%.webp: src/%.webp
 	@mkdir -p $(dir $@)
 	$(FFMPEG) $(FFMPEG_FLAGS) -i $< -vf scale="'min(1000,iw)':-1" $@
 
