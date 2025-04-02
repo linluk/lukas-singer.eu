@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # change the directory to where this script is
-cd "$(realpath "$(dirname "$BASH_SOURCE")")"
-# change upwards from there to whereever the project root is
+cd "$(realpath $(dirname $0))"
+# change upwards from the to whereevery the project root is
 . lib/ensure_project_root.sh
 
 if [[ -f secrets.sh ]]; then

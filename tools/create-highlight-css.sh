@@ -1,5 +1,11 @@
 #!/bin/bash
 
+
+# change the directory to where this script is
+cd "$(realpath $(dirname $0))"
+# change upwards from the to whereevery the project root is
+. lib/ensure_project_root.sh
+
 # Background Info:
 #   https://stackoverflow.com/questions/62774695/pandoc-where-are-css-files-for-syntax-highlighting-code
 # Special Answers:
@@ -30,14 +36,6 @@ declare -A LANGUAGES=(                      \
     ["default"]="hi"                        \
 )
 
-
-while [[ $(pwd) != "/" && ! -d .git ]]; do
-    cd ..
-done
-if [[ $(pwd) == "/" ]]; then
-    echo "Project Root not found!" 1>&2
-    exit 1
-fi
 EXAMPLES="~~~\nhi\n~~~"
 for k in "${!LANGUAGES[@]}"
 do
@@ -45,6 +43,7 @@ do
     #echo "Example: ${LANGUAGES[$k]}"
     EXAMPLES+=$(echo "~~~$k\n${LANGUAGES[$k]}\n~~~\n")
 done
+
 TEMP_FILE=$(mktemp)
 echo "\$highlighting-css\$" > "$TEMP_FILE"
 echo -e $EXAMPLES | pandoc --metadata title="dummy" --highlight-style=$PANDOC_STYLE --template="$TEMP_FILE" > "$HIGHLIGHT_CSS"
