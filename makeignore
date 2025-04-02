@@ -61,3 +61,4 @@
 
 # error screen collection is still experimental
 src/errors/%
+src/images/errors/%
