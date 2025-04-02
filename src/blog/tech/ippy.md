@@ -54,7 +54,7 @@ Address: 2a00:1450:4016:809::200e
 
 Zusätzlich haben wir noch ein Suffix "erfunden", in diesem Fall $/20$.
 
-| ![Tafelbild zur IP-Analyse](/images/blog/tech/ippy/drawing.png) |
+| ![Tafelbild zur IP-Analyse](/images/blog/tech/ippy/drawing.webp) |
 |:---:|
 | <small>Tafelbild zur IP-Analyse von `142.250.184.196 /20`</small> |
 
