@@ -333,7 +333,8 @@ def update_blog():
                       ex, entry_file, ''.join(header))
                 error(None if KEEP_GOING_ON_YAML_ERROR else 1,
                       f'Failed to parse YAML Header in "{entry_file}" '
-                      f'{"Continue" if KEEP_GOING_ON_YAML_ERROR else "Stop"}!')
+                      f'{"Continue" if KEEP_GOING_ON_YAML_ERROR else "Stop"}! '
+                      f'{ex}')
     debug(category_headers)
     # pass categories and headers to index-builder and rss-builder
     update_index_files(category_headers)
