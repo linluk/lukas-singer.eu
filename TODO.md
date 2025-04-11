@@ -20,7 +20,7 @@ Blog
 - [ ] Generische Container in C
 - [ ] Brainf*ck
 - [ ] `sort()`
-- [ ] Public Errorscreens
+- [-] Public Errorscreens
 
 Site
 ----
@@ -29,3 +29,4 @@ Site
 - [ ] LICENSE file im Project Root CC für Content, WTFPL für Code
 - [X] Einrückung der ersten Zeilen in Code-Blöcken fixen
 - [ ] `make info` soll auf durch `makeignore` ignorierte files hinweisen
+- [ ] "microblog"/site-news/site-rss? Für Nicht-Blog-Content
