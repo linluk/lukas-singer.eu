@@ -25,7 +25,7 @@ Ich hab eine Schwäche für "**public error screens**" also für Fehlermeldungen
 | **Vier Gedanken dazu:** |
 | **1.** Lecker! Auch für nicht-Veganer! |
 | **2.** Die Uhrzeit ist tatsächlich rein zufällig so erwischt |
-| **3.** Irgendwie erinnert mich das an Bild an eine Herrentoilette |
+| **3.** Irgendwie erinnert mich das Bild an eine Herrentoilette |
 | **4.** Die Terminals sind *jetzt!* neu,<br><small>(vielen mir am 12.4.2025 zum ersten mal auf)</small><br> in weniger als einem halben Jahr [endet der Support für *Windows 10*](https://learn.microsoft.com/en-us/lifecycle/announcements/october-14-2025-products-end-of-support),<br>das ist doch *Windows 10*, oder? |
 | <small>entdeckt am 12. April 2025 in der *Swing Kitchen* Filliale in Innsbruck</small> |
 
