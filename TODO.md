@@ -4,11 +4,9 @@ description: TODOs und Ideen für lukas-singer.eu
 lang: de
 ---
 
-TODOs
-=====
+# TODOs
 
-Blog
-----
+## Blog
 
 - [ ] Vom Quellcode zur ausführbaren Datei
 - [ ] Wie löst man einen Zauberwürfel?
@@ -22,11 +20,16 @@ Blog
 - [ ] `sort()`
 - [-] Public Errorscreens
 
-Site
-----
+## Site
 
 - [ ] [Issues auf GitHub](https://github.com/linluk/lukas-singer.eu/issues) irgendwo/irgendwie einbinden
 - [ ] LICENSE file im Project Root CC für Content, WTFPL für Code
 - [X] Einrückung der ersten Zeilen in Code-Blöcken fixen
 - [ ] `make info` soll auf durch `makeignore` ignorierte files hinweisen
 - [ ] "microblog"/site-news/site-rss? Für Nicht-Blog-Content
+- [ ] Sport
+    - [ ] Strava `<iframe>` ?
+    - [ ] Ziele
+    - [ ] Stories
+- [ ] Theater
+    - [ ] DSP Artikel
