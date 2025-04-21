@@ -24,6 +24,7 @@ lang: de
 
 - [ ] [Issues auf GitHub](https://github.com/linluk/lukas-singer.eu/issues) irgendwo/irgendwie einbinden
 - [ ] LICENSE file im Project Root CC für Content, WTFPL für Code
+- [ ] `tools/convert-images.sh` um `Usage` oder `-h`/`--help` erweitern!
 - [X] Einrückung der ersten Zeilen in Code-Blöcken fixen
 - [ ] `make info` soll auf durch `makeignore` ignorierte files hinweisen
 - [ ] "microblog"/site-news/site-rss? Für Nicht-Blog-Content
