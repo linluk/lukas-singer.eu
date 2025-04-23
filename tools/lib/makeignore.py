@@ -22,7 +22,6 @@
 
 import re
 
-
 MAKEIGNORE = 'makeignore'
 
 _entries = None
@@ -37,18 +36,38 @@ def entries():
     with open(MAKEIGNORE, 'r') as file:
         for line in file:
             if not regex.match(line):
-                _entries.append(line)
+                _entries.append(line.removesuffix('\n'))
     return _entries
 
 
-def ignore(filename: str) -> bool:
+def should_ignore(filename: str) -> bool:
     """ returns True if filename matches an entry in makeignore """
     # TODO : make this compatible to filter-out; see:
     #        https://www.gnu.org/software/make/manual/html_node/Text-Functions.html
+    for entry in entries():
+        if filename.startswith(entry):
+            return True
     return False
+
+
+def filter(filenames):
+    for filename in filenames:
+        if should_ignore(filename):
+            yield filename
+
+
+def filter_out(filenames):
+    for filename in filenames:
+        if not should_ignore(filename):
+            yield filename
 
 
 if __name__ == '__main__':
     # TEST!
     # Call From $PROJECT_ROOT!
     print(entries())
+    print(f"{should_ignore('src/blog/tech/bye-gnome-hi-xfce-part-1.md')=}")
+    print(f"{should_ignore('src/blog/tech/ippy.md')=}")
+    print(f"{list(filter(['src/blog/tech/bye-gnome-hi-xfce-part-1.md', 'src/blog/tech/ippy.md']))=}")
+    print(f"{list(filter_out(['src/blog/tech/bye-gnome-hi-xfce-part-1.md', 'src/blog/tech/ippy.md']))=}")
+

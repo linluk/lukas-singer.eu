@@ -25,6 +25,7 @@ import datetime
 import yaml
 from lib.log import error, warning, info, debug
 from lib.ensure_project_root import ensure_project_root
+import lib.makeignore as makeignore
 
 # import lib.log
 # lib.log.LOG_DEBUG = True
@@ -195,10 +196,6 @@ def filename_compatible(name: str) -> str:
                    if c in 'abcdefghijklmnopqrstuvwxyz-1234567890')
 
 
-def match_makeignore(filename: str) -> bool:
-    return False
-
-
 def update_index_files(category_headers: dict[str, list[dict]]):
     toplevel_index_file = os.path.join(BLOG_PATH, 'index.md')
     with open(toplevel_index_file, 'w') as toplevel_index:
@@ -311,7 +308,7 @@ def update_blog():
                 and e.endswith('.md'))]
         for entry in entries:
             entry_file = os.path.join(cat_dir, entry)
-            if match_makeignore(entry_file):
+            if makeignore.should_ignore(entry_file):
                 info(f"{entry_file} matches makeignore-pattern. Skip!")
                 continue
             debug(f"{category=}, {cat_dir=}, {entry=}, {entry_file=}")
