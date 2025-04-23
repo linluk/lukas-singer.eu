@@ -62,3 +62,6 @@
 # error screen collection is still experimental
 #src/errors/%
 #src/images/errors/%
+
+src/blog/tech/bye-gnome-hi-xfce-part-1.md
+
