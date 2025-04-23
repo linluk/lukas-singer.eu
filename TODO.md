@@ -27,6 +27,7 @@ lang: de
 - [ ] `tools/convert-images.sh` um `Usage` oder `-h`/`--help` erweitern!
 - [X] Einrückung der ersten Zeilen in Code-Blöcken fixen
 - [ ] `make info` soll auf durch `makeignore` ignorierte files hinweisen
+- [ ] `makeignore` sollte auch für das erstellen der blog-indexes und die feeds in betracht gezogen werden!
 - [ ] "microblog"/site-news/site-rss? Für Nicht-Blog-Content
 - [ ] Sport
     - [ ] Strava `<iframe>` ?
