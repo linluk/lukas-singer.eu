@@ -76,7 +76,7 @@ div.main table {
     margin-right: auto;
 }
 .img-max-width-800 img {
-    max-width: 800px;
+    max-width: min(100%, 800px);
 }
 .img-max-height-800 img {
     max-height: 800px;
@@ -173,6 +173,7 @@ img {
 @media screen and (max-width: 600px) {
     header nav ul {
         position: static;
+        padding-bottom: 7px;
     }
     header nav ul li {
         float: none;
