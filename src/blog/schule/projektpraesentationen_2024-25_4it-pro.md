@@ -1,55 +1,30 @@
 ---
+title: Projektpräsentationen der 4IT-Pro @ tfbs-eke
 lang: de
 keywords:
+- schule
+- 4ITp
 - tfbs-eke
 - informatik
-- lukas singer
+- it professionals tirol
 - iptv
 - veeam backup
 - secure remote workspace
 - pamari
-- quiz ai
-- projekte
-- projektpräsentationen
-redirect: https://www.lukas-singer.eu/blog/schule/projektpraesentationen_2024-25_4it-pro.html
-title: Projekte der 4. IT-Pro-Tirol
 description: Projekte der 4. IT-Pro-Tirol im Bereich Informatik und Applikationsentwicklung an der Tiroler Fachberufsschule für Elektrotechnik, Kommunikation und Elektronik
-nav-schule: true
-nav-schule-projects: true
+blog-title: Projektpräsentationen der 4IT-Pro @ tfbs-eke
+blog-date: 2025-04-23
+nav-blog: true
+nav-blog-schule: true
+blog-changelog:
+- date: 2025-04-28
+  text: moved content here from "schule/projekte"
 ---
 
-<br>
-
-<br>
-
-<center>***Forwarding to the Blog-Section***</center>
-
-<center>
-    [Click here if you will not be redirected.](/blog/schule/projektpraesentationen_2024-25_4it-pro.md)
-</center>
-
-<br>
-
-<br>
-
-<br>
-
-<br>
-
-<br>
-
-<br>
-
-<br>
-
-<br>
-
-<br>
-
-<br>
-
 # Projekte der 4. IT-Pro-Tirol, 3. Lehrgang 2024/25
-Am 23. April 2025 fanden die Projektpräsentationen der Abschlussklasse 4ITp an der Tiroler Fachberufsschule für Elektrotechnik, Kommunikation und Elektronik statt.
+
+Heute, am 23. April 2025 fanden die Projektpräsentationen der Abschlussklasse 4ITp (*4. IT Pro Tirol*[^1])
+an der Tiroler Fachberufsschule für Elektrotechnik, Kommunikation und Elektronik statt.
 
 Neben einigen Schulklassen, Lehrer:innen und dem Direktor waren auch Vertreter der Lehrbetriebe vor Ort und liesen sich von den Präsentationen begeistern.
 
@@ -58,7 +33,6 @@ Neben einigen Schulklassen, Lehrer:innen und dem Direktor waren auch Vertreter d
 ## IPTV
 
 Die Schüler erarbeiteten ein Streamingdienst auf Basis von [TVHeadend](https://github.com/tvheadend/tvheadend) mit [Kodi](https://kodi.tv/) als User-Client für das Schulinterne Netzwerk.
-
 
 | ![Foto der Präsentation zu IPTV](/images/schule/projekte/2024-25-lg3-4itp-iptv.webp) |
 |---|
@@ -92,10 +66,13 @@ Mit diesem Projekt haben die Schüler ein Webanwendung entwicklet, welche [Gemin
 
 <br>
 
-</div>
+</div> <!-- end of img-width, img height stuff -->
 
-**Gratulation zu den tollen Projekten und Präsentationen!**
+**Gratulation an die Schüler**[^2] **der Klasse 4ITp zu den tollen Projekten und Präsentationen!**
+
+<br>
 
 <br>
 
-<br>
+[^1]: [www.it-professionals.tirol/](https://www.it-professionals.tirol/)
+[^2]: Hier wurde nicht aufs Gendern vergessen, es waren nur Schüler in der Klasse.

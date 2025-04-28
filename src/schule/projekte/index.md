@@ -4,7 +4,10 @@ keywords:
 - tfbs-eke
 - informatik
 - lukas singer
-- ferienkalender
+- projekte
+- presentationen
+- schüler:innen
+- Tiroler Fachberufsschule für Elektrotechnik, Kommunikation und Elektronik
 title: Schulprojekte
 description: Schulprojekte im Bereich Informatik und Applikationsentwicklung an der Tiroler Fachberufsschule für Elektrotechnik, Kommunikation und Elektronik
 nav-schule: true
@@ -15,7 +18,7 @@ nav-schule-projects: true
 
 ## Schuljahr 2024/25
 
-* [3. Lehrgang, Klasse 4IT-Pro](2024-25_lg3_4ITp.md)
+* [Projektpräsentationen im 3. Lehrgang der Klasse 4IT-Pro](../../blog/schule/projektpraesentationen_2024-25_4it-pro.md)
 
 
 <br>
