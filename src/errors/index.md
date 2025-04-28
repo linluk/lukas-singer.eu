@@ -20,6 +20,27 @@ Ich hab eine Schwäche für "**public error screens**" also für Fehlermeldungen
 
 <div class="img-max-width-800 img-max-height-800">
 
+| ![Cable No Conectado](/images/errors/2025-04-27_cable-no-conectado.webp) |
+|:---:|
+| `cable no conectado` |
+| <small>entdeckt am 27. April 2025 im *Pull and Bear* in Bozen</small> |
+
+<br>
+
+| ![13:40, 13:46 oder doch 13:50?](/images/errors/2025-04-25_muenchen-ost-uhrzeit.webp) |
+|:---:|
+| 13:40, 13:46 oder doch 13:50? <br> (und **nein** das sind nicht die Abfahrtszeiten!) |
+| <small>entdeckt am 25. April 2025 am Ostbahnhof München</small> |
+
+<br>
+
+| ![Hier KÖNNTE Ihre Werbung stehen ;-)](/images/errors/2025-04-24_muenchen-ost-werbung.webp) |
+|:---:|
+| Hier KÖNNTE Ihre Werbung stehen ;-) |
+| <small>entdeckt am 24. April 2025 am Ostbahnhof München</small> |
+
+<br>
+
 | ![Vier Gedanken: lecker, uhrzeit, pissoir, support](/images/errors/2025-04-12_swing.webp) |
 |:---:|
 | **Vier Gedanken dazu:** |
