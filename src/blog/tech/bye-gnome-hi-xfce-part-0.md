@@ -68,7 +68,7 @@ Heute nutze ich `Neovim` (btw.).
 ## Zurück zu Desktopenvironments
 
 <div class="img-max-width-800">
-| ![Gnome Applications and Desktop Switcher](/images/blog/tech/bye-gnome-hi-xfce/gnome01.webp) |
+| ![Gnome Applications and Desktop Switcher](/images/blog/tech/bye-gnome-hi-xfce/00-gnome.webp) |
 |:---:|
 | Gnome Applications and Desktop Switcher |
 </div>
@@ -114,7 +114,7 @@ Mit `unstable` (diese Variante heißt, wie alle `Debian`-Versionen nach einem To
 Jetzt wird erstmal eine [QEMU](https://www.qemu.org/)-Umgebung aufgesetzt, `Debian sid` mit `xfce` installiert und diese dann verwendet.
 
 <div class="img-max-width-800">
-| ![xfce mit ersten tweaks in QEMU](/images/blog/tech/bye-gnome-hi-xfce/xfce01.webp) |
+| ![xfce mit ersten tweaks in QEMU](/images/blog/tech/bye-gnome-hi-xfce/00-xfce.webp) |
 |:---:|
 | xfce mit ersten tweaks in QEMU |
 </div>
