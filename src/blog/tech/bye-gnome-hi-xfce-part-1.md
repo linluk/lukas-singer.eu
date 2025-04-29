@@ -13,14 +13,93 @@ nav-blog-tech: true
 blog-changelog:
 ---
 
-Hier den Blogeintrag schreiben ...
-Und nicht vergessen, den YAML Header anzupassen!
+**TL;DR:**  
 
+<br>
 
+# Das Ziel: `sid`
 
+Mit dem Codenamen `sid` wird die `unstable` (so instabielt soll die scheibar nicht sein; wir werden es sehen)
+Version von Debian bezeichnet.  
+Während sich die Codenamen der `stable` und `testing` Versionen mit jedem Release ändern,
+bleibt der Codename `sid` für `unstable` immer gleich.
 
+Momentan hat Debian `stable` die Version 12 und trägt den Codenamen `bookworm`.
+Version 13 wird dann `trixie` heißen, der aktuelle `testing` Release heißt natürlich auch so.
+Wenn `trixie` dann als `stable` released wird, dann wird der neue `testing` Release `forky` heißen.  
+Nur `sid` bleibt `sid`.  
+<small>Wer es genauer wissen möchte, kann [hier](https://www.debian.org/releases/) mehr über Debian Releases nachlesen.</small>
 
+> Die Namen basieren übrigens auf
+> [Charakteren aus dem Toy-Story-Universum](https://en.wikipedia.org/wiki/List_of_Toy_Story_characters).
 
+**Es soll also `sid` installiert werden.**
+
+# Das Vorgehen
+
+Um `sid` zu installieren, gibt es mehrere [Möglichkeiten](https://wiki.debian.org/DebianUnstable#Installation).
+Ich habe mich (zumindest für meine ersten Tests) für folgende Variante entschieden:
+
+1. Debain `stable` installieren
+1. `source.list`s anpassen (`stable` bzw. `bookworm` durch `sid` austauschen
+1. mit `apt update` gefolgt von `apt full-upgrade` das System "auf `sid` umstellen
+
+> Diese Variante ist eine Einbahnstraße, man kann:  
+> `bookworm` (`stable`) $\rightarrow$ `trixie` (`testing`) $\rightarrow$ `sid` (`unstable`)  
+> oder - wie hier geplant - natürlich direkt: `bookworm` (`stable`) $\rightarrow$ `sid` (`unstable`) upgraden.
+>
+> `sid` (`unstable`) $\rightarrow$ `trixie` (`testing`) oder gar `sid` (`unstable`) $\rightarrow$ `bookworm` (`stable`)
+> funktioniert nicht <small><small>(so einfach)</small></small>!
+
+## Let's go
+
+Als Erstes erstellen wir eine "QEMU-Festplatte" mit $20GB$ Speicher, das sollte locker genügen, auch um später ein bisschen Software in der VM zu installieren. Das funktioniert mit folgendem Befehl:
+
+```plain
+qemu-img create -f qcow2 debian-vm.qcow2 20G
+```
+
+Dann starten wir eine QEMU-VM und geben mit "eingelegtem ISO" - dem Debian Net-Installer. Dazu dient dieser Befehl:
+
+```plain
+qemu-system-x86_64 -enable-kvm -m 2048 -smp 2 -cdrom "~/Downloads/debian-12.9.0-amd64-netinst.iso" -drive file=debian-vm.qcow2,format=qcow2 -boot d -nic user,model=virtio
+```
+
+| ![Installer Welcome](/images/blog/tech/bye-gnome-hi-xfce/01-deb-inst-welcome.webp) | ![Sprache Auswählen](/images/blog/tech/bye-gnome-hi-xfce/01-deb-inst-lang.webp) |
+|:---:|:---:|
+|Hello World! Vom ISO Booten und man wird vom Installer Willkommen geheißen. | Als Erstes können wir die Sprache wählen, ich mags wenn meine Software English spricht. |
+
+| ![Location 1](/images/blog/tech/bye-gnome-hi-xfce/01-deb-inst-loc-01.webp) | ![Location 2](/images/blog/tech/bye-gnome-hi-xfce/01-deb-inst-loc-02.webp) |
+|:---:|:---:|
+| Zur Auswahl zum Beispiel der Locale Settings ... | ... oder der Zeitzone ... |
+
+| ![Location 3](/images/blog/tech/bye-gnome-hi-xfce/01-deb-inst-loc-03.webp) | ![Location 4](/images/blog/tech/bye-gnome-hi-xfce/01-deb-inst-loc-04.webp) |
+|:---:|:---:|
+| ... sollte man sein geografische Position ... | ... sowie seine geünschte Locale Einstellungenwählen. |
+
+| ![Keyboard Layout](/images/blog/tech/bye-gnome-hi-xfce/01-deb-inst-kb.webp) | ![Hostname](/images/blog/tech/bye-gnome-hi-xfce/01-deb-inst-hostname.webp) |
+|:---:|:---:|
+| Ab jetzt braucht man nicht mehr nur `<UP>`, `<DOWN>`, `<TAB>` und `<RETURN>`, somit ist das richtige Keyboardlayout auszuwählen. | Damit kann man dann gleich den Hostanem ... |
+
+| ![Domainname](/images/blog/tech/bye-gnome-hi-xfce/01-deb-inst-domain.webp) | ![Rootpassword](/images/blog/tech/bye-gnome-hi-xfce/01-deb-inst-rootpassword.webp) |
+|:---:|:---:|
+| ... und Domänennamen (der hier einfach frei bleibt) vergeben. | Das Rootpasswort. Dazu gibt es ein wichtiges Detail zu wissen. |
+
+Wird bei der Installation ein Rootpassword vergeben, so kann man sich am System nachher als User `root` anmelden (Login oder `su`),
+dafür ist der "haupt Benutzer" dann nicht von vornherein in der Lage den Befehl `sudo` zu nutzen.
+
+Für Desktopsysteme ist es meiner Meinung nach Sinnvoll das Rootpassword einfach leer zu lassen; man sollte ohnehin nicht als `root` arbeiten und `sudo` will und braucht man meistens auch.
+
+| ![Full Name](/images/blog/tech/bye-gnome-hi-xfce/01-deb-inst-fullname.webp) | ![Username](/images/blog/tech/bye-gnome-hi-xfce/01-deb-inst-user.webp) |
+|:---:|:---:|
+| Somit gehts ans User-Anlegen. Neben dem vollen Namen ... | ... brauchte der natürlich einen Username. |
+
+Der Username ist gleichzeitig auch der Verzeichnisname des Heimatverzeichnisses des Users; in meinem Beispiel somit `/home/linluk/`.
+Er muss also den Richtlinien für Verzeichnisnamen entsprechen und darf keine Leerzeichen enthalten. Großbuchstaben sind auch unüblich.
+
+| ![Userpassword](/images/blog/tech/bye-gnome-hi-xfce/01-deb-inst-password.webp) | ![Partitionieren](/images/blog/tech/bye-gnome-hi-xfce/01-deb-inst-part-01.webp) |
+|:---:|:---:|
+| Als User braucht man natürlich auch ein Passwort!<br>Das sollte auch nicht zu *schwach* sein, schließlich darf dieser User dann als `sudo` damit *alles*. | Kaum ist der User angelegt, geht es auch schon ans Partitionieren ... |
 
 
 
