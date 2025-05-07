@@ -17,6 +17,8 @@ blog-date: 2025-03-31
 nav-blog: true
 nav-blog-tech: true
 blog-changelog:
+- date: 2025-05-07
+  text: fixed an "AND/OR confusion"
 ---
 
 *Heute ging es im IT-Laborunterricht um IP-Adressen, IP-Analyse, CIDR, usw.
@@ -230,8 +232,8 @@ for _ in range(suffix - 1):
 Und jetzt nur noch die bereits am Tafelbild gezeigten Regeln anwenden:
 
 ```python
-netid = ip & snm                       # NetID = IP bitwise-OR Subnetmask
-bca = ip | ~snm                        # BCA = IP bitwise-AND inverted Subnetmask
+netid = ip & snm                       # NetID = IP bitwise-AND Subnetmask
+bca = ip | ~snm                        # BCA = IP bitwise-OR inverted Subnetmask
 host_range = (netid + 1, bca - 1)      # Hostrange = from (NetID + 1) to (BCA - 1)
 host_count = 2 ** (32 - suffix) - 2    # Two less than Two to the power of 32 minus Suffix
 ```
