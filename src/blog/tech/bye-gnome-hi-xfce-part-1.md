@@ -42,7 +42,7 @@ Ich habe mich (zumindest für meine ersten Tests) für folgende Variante entschi
 
 1. Debain `stable` installieren
 1. `source.list`s anpassen (`stable` bzw. `bookworm` durch `sid` austauschen
-1. mit `apt update` gefolgt von `apt full-upgrade` das System "auf `sid` umstellen
+1. mit `apt update` gefolgt von `apt full-upgrade` das System "auf `sid` umstellen"
 
 > Diese Variante ist eine Einbahnstraße, man kann:  
 > `bookworm` (`stable`) $\rightarrow$ `trixie` (`testing`) $\rightarrow$ `sid` (`unstable`)  
@@ -62,7 +62,10 @@ qemu-img create -f qcow2 debian-vm.qcow2 20G
 Dann starten wir eine QEMU-VM und geben mit "eingelegtem ISO" - dem Debian Net-Installer. Dazu dient dieser Befehl:
 
 ```plain
-qemu-system-x86_64 -enable-kvm -m 2048 -smp 2 -cdrom "~/Downloads/debian-12.9.0-amd64-netinst.iso" -drive file=debian-vm.qcow2,format=qcow2 -boot d -nic user,model=virtio
+qemu-system-x86_64 -enable-kvm -m 2048 -smp 2                           \
+                   -cdrom "~/Downloads/debian-12.9.0-amd64-netinst.iso" \
+                   -drive file=debian-vm.qcow2,format=qcow2             \
+                   -boot d -nic user,model=virtio
 ```
 
 | ![Installer Welcome](/images/blog/tech/bye-gnome-hi-xfce/01-deb-inst-welcome.webp) | ![Sprache Auswählen](/images/blog/tech/bye-gnome-hi-xfce/01-deb-inst-lang.webp) |
@@ -101,6 +104,41 @@ Er muss also den Richtlinien für Verzeichnisnamen entsprechen und darf keine Le
 |:---:|:---:|
 | Als User braucht man natürlich auch ein Passwort!<br>Das sollte auch nicht zu *schwach* sein, schließlich darf dieser User dann als `sudo` damit *alles*. | Kaum ist der User angelegt, geht es auch schon ans Partitionieren ... |
 
+| ![Partitionieren](/images/blog/tech/bye-gnome-hi-xfce/01-deb-inst-part-02.webp) | ![Partitionieren](/images/blog/tech/bye-gnome-hi-xfce/01-deb-inst-part-03.webp) |
+|:---:|:---:|
+| Weils für die mein Vorhaben keine große Rolle spielt: *Guided, Entire Disk* (also geführt, gesamte Platte). Diese (gibt eh nur eine) wählt man aus ... | ... und dann belasse ich es hier auch Simpel und lege alles auf eine Partition. |
+
+| ![Partitionieren](/images/blog/tech/bye-gnome-hi-xfce/01-deb-inst-part-04.webp) | ![Partitionieren](/images/blog/tech/bye-gnome-hi-xfce/01-deb-inst-part-05.webp) |
+|:---:|:---:|
+| Ein kurzer Kontrollblick obs eh so passt. Ja. | Und das ganze nochmal bestätigen. Fertig Partitioniert. |
+
+| ![Extra Installation Media](/images/blog/tech/bye-gnome-hi-xfce/01-deb-inst-extra-media.webp) | ![Paketmanager](/images/blog/tech/bye-gnome-hi-xfce/01-deb-inst-apt-01.webp) |
+|:---:|:---:|
+| Wenn wir noch ein weiteres ISO mit zusätzlichen Paketen hätten, könnten wir das jetzt durchsuchen; hab ich nicht. | Aber dafür starten wir gleich mit der Konfiguration des `APT`, als Erstes werden wir nach unserem bevorzugtem Spiegelserver gefragt ... |
+
+| ![Paketmanager](/images/blog/tech/bye-gnome-hi-xfce/01-deb-inst-apt-02.webp) | ![Paketmanager](/images/blog/tech/bye-gnome-hi-xfce/01-deb-inst-apt-03.webp) |
+|:---:|:---:|
+| ... dann auf Basis dessen, nach unserer gewünschten URL ... | ... und (was ich leer lassen kann) nach einem Proxy. |
+
+| ![Survey](/images/blog/tech/bye-gnome-hi-xfce/01-deb-inst-survey.webp) | ![Software](/images/blog/tech/bye-gnome-hi-xfce/01-deb-inst-software.webp) |
+|:---:|:---:|
+| Der *Popularity Contest* von Debian ist was tolles[^1], macht für "virtuelle Testsysteme" aber nicht viel Sinn. | Und jetzt gehts endlich drum die **Software auszuwählen** es wird natürlich ***XFCE*** gewählt! |
+
+| ![Grub](/images/blog/tech/bye-gnome-hi-xfce/01-deb-inst-grub-01.webp) | ![Grub](/images/blog/tech/bye-gnome-hi-xfce/01-deb-inst-grub-02.webp) |
+|:---:|:---:|
+| Nach kurzer Wartezeit sind wir jetzt so gut wie am Ende. Der Installer möchte noch wissen ob und wohin der Bootloader installiert werden soll. Erstens: ja. | Zweitens: hierhin |
+
+| ![Reboot](/images/blog/tech/bye-gnome-hi-xfce/01-deb-inst-reboot.webp) | ![Grub](/images/blog/tech/bye-gnome-hi-xfce/01-deb-reboot.webp) |
+|:---:|:---:|
+| Ein Neustart und ... | ... GRUB begrüßt einem auf zum ersten booten eines ganz frisch installiertem Systems. |
+
+Somit ist die Installation abgeschlossen.
+
+Wir haben nun ein frisch installiertes Debian System vor uns, allerdings *noch* mit Debian *stable*. Wir möchten jedoch **`unstable`** also **`sid`**.
+
+
+
+
 
 
 ### NOTES AND COMMANDS
@@ -109,3 +147,5 @@ Er muss also den Richtlinien für Verzeichnisnamen entsprechen und darf keine Le
 qemu-img create -f qcow2 debian-vm.qcow2 20G
 qemu-system-x86_64 -enable-kvm -m 2048 -smp 2 -cdrom "~/Downloads/debian-12.9.0-amd64-netinst.iso" -drive file=debian-vm.qcow2,format=qcow2 -boot d -nic user,model=virtio
 qemu-system-x86_64 -enable-kvm -m 2048 -smp 2 -drive file=debian-vm.qcow2,format=qcow2 -nic user,model=virtio
+
+[^1]: https://popcon.debian.org/

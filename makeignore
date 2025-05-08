@@ -63,6 +63,6 @@
 #src/errors/%
 #src/images/errors/%
 
-src/blog/tech/bye-gnome-hi-xfce-part-1.md
-src/images/blog/tech/bye-gnome-hi-xfce/01-%
+#src/blog/tech/bye-gnome-hi-xfce-part-1.md
+#src/images/blog/tech/bye-gnome-hi-xfce/01-%
 
