@@ -7,7 +7,7 @@ keywords:
 - Bye Gnome; Hi xfce - Part 1
 description: tech - Bye Gnome; Hi xfce - Part 1
 blog-title: Bye Gnome; Hi xfce - Part 1
-blog-date: 2025-04-22
+blog-date: 2025-05-14
 nav-blog: true
 nav-blog-tech: true
 blog-changelog:
