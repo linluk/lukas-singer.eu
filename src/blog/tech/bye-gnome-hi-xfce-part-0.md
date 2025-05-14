@@ -18,7 +18,11 @@ blog-date: 2025-04-22
 nav-blog: true
 nav-blog-tech: true
 blog-changelog:
+- date: 2025-05-14
+  text: link "weiter zu part 1" hinzugefügt
 ---
+
+[Weiter zu Part 1](bye-gnome-hi-xfce-part-1.md)
 
 **TL;DR:**  
 Um mal wieder was Neues auszuprobieren, möchte ich von `Gnome` auf `xfce` wechseln. Auf `xfce 4.20`, das gibts erst in Debian Testing bzw. Debian Sid (unstable).  
@@ -150,5 +154,9 @@ Der Part 0 dieser Reihe ist jetzt schon mal ziemlich unstrukturiert geworden.
 Es geht in erster Linie darum warum man (in dem Fall ich) einfach ab-und-zu neue Software ausprobieren sollte und wie ich das vorhabe zu tun.
 
 Im nächsten Teil wirds dann um das Einrichten einer QEMU-VM, die Intallation und das Upgrade auf `sid` gehen.
+
+<br>
+
+[Weiter zu Part 1](bye-gnome-hi-xfce-part-1.md)
 
 <br>

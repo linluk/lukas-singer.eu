@@ -13,6 +13,8 @@ nav-blog-tech: true
 blog-changelog:
 ---
 
+[Zurück zu Part 0](bye-gnome-hi-xfce-part-0.md)
+
 # Das Ziel: `sid`
 
 Mit dem Codenamen `sid` wird die `unstable` (so instabielt soll die scheibar nicht sein; wir werden es sehen)
@@ -66,7 +68,7 @@ qemu-system-x86_64 -enable-kvm -m 2048 -smp 2                           \
 
 | ![Installer Welcome](/images/blog/tech/bye-gnome-hi-xfce/01-deb-inst-welcome.webp) | ![Sprache Auswählen](/images/blog/tech/bye-gnome-hi-xfce/01-deb-inst-lang.webp) |
 |:---:|:---:|
-|Hello World! Vom ISO Booten und man wird vom Installer Willkommen geheißen. | Als Erstes können wir die Sprache wählen, ich mags wenn meine Software English spricht. |
+|Hello World! Vom ISO booten und man wird vom Installer Willkommen-geheißen. | Als Erstes können wir die Sprache wählen, ich mags wenn meine Software English spricht. |
 
 <br>
 
@@ -213,6 +215,8 @@ See ya.
 <br>
 
 <br>
+
+[Zurück zu Part 0](bye-gnome-hi-xfce-part-0.md)
 
 <br>
 
