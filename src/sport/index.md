@@ -49,6 +49,12 @@ Wenn es die inneren und äusseren Umstände erlauben, dann gehe ich jeden Tag la
 | 31.12.2024 | Silvesterlauf Innsbruck 2024             | 5 km | 0:21:32 | [strava](https://www.strava.com/activities/13232812218) |
 |  29.4.2025 | K7NT / Innsbruck Alpine Trailrun Festival 2025 | 7,3 km (250 hm) | 1:07:16 | [blog](/blog/sport/iatf-2025.md), [strava](https://www.strava.com/activities/14336015278) |
 |   3.5.2025 | K42 / Innsbruck Alpine Trailrun Festival 2025 | 42 km (2250 hm) | 6:08:26 | [blog](/blog/sport/iatf-2025.md), [strava](https://www.strava.com/activities/14364007060) |
+|  25.5.2025 | Stadtlauf Innsbruck | 10 km | 0:43:18 | [strava](https://www.strava.com/activities/14587458047) |
+|   2.8.2025 | P30 Pitz Alpine Glacier Trail | 27,9 km (1492 hm) | 4:34:14 | [strava](https://www.strava.com/activities/15317634820) |
+|   7.9.2025 | Achenseelauf 2025 | 23 km (208 hm) | 1:55:32 | 32.@M30, 87. Gesamt; [strava](https://www.strava.com/activities/15726366674) |
+|  13.9.2025 | Tiroler Firmenlauf 2025 | 5,8 km | 0:23:36,6 | 155. Gesamt; [strava](https://www.strava.com/activities/15798732523) |
+|  20.9.2025 | 12. Night Run Innsbruck | 21,1 km | 1:33:38 | 6.@M30, 24. Gesamt; [strava](https://www.strava.com/activities/15879390217) |
+| 31.12.2025 | Silvesterlauf Innsbruck 2025 | 5 km | 0:18:56,6 | 29.@M30, 112. Gesamt; [strava](https://www.strava.com/activities/16895805498) |
 
 </div>
 
