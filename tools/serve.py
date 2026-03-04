@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 import os
+import time
 import socketserver
 
 from http.server import SimpleHTTPRequestHandler as Handler
@@ -16,4 +17,9 @@ if __name__ == '__main__':
     with socketserver.TCPServer(("", PORT), Handler, True) as httpd:
         print(f'Serving {os.getcwd()} on Port: {PORT}')
         print(f'http://localhost:{PORT}')
-        httpd.serve_forever()
+        try:
+            httpd.serve_forever()
+        except KeyboardInterrupt:
+            print('KeyboardInterrupt ...')
+    print('Bye bye.')
+
