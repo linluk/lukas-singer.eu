@@ -529,6 +529,7 @@ Befehl:
     [rip] network  CONNECTED-NET-ID  CONNECTED-NET-SNM
     [rip] network  CONNECTED-NET-ID  CONNECTED-NET-SNM
           ...
+    [rip] no auto-summary
     ```
 
 2.  [TBV] OSPF
