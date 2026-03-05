@@ -23,6 +23,8 @@ nav-blog-tech: true
 blog-changelog:
 ---
 
+> **TL;DR:** how to "revert" messed up default application after installing brave (or any other app that fucks up mime type associations)
+
 ## the story
 
 Yesterday I had the *great* idea of installing [brave](https://brave.com/) on my machine. Not because I want to use it, but I want to "test" it.
