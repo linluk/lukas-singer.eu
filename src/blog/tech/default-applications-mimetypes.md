@@ -41,7 +41,7 @@ So I opened up the "Default Applications"-Settings on XFCE.
 *brave* is set as default Browser,  
 *brave* is set as default PDF-Viewer,  
 *brave* is set as default Image-Viewer,  
-*brave* is set as default *<small><small>fuckin'</small></small>everything*!
+*brave* is set as default *<small><small>fuckin'</small> (almost) </small>**everything**!*
 
 <br>
 
@@ -144,4 +144,8 @@ printf '```\n$ sudo update-desktop-database\n```\n'
 ```
 
 [fu-brave.sh](https://codeberg.org/linluk/dump/src/branch/main/fu-brave.sh) (this `bash` script, on `codeberg.org`)
+
+<br>
+
+**Thanks for Reading :-)**
 
