@@ -143,5 +143,5 @@ printf 'Clean Up whatever you want to clean up; then do:\n\n'
 printf '```\n$ sudo update-desktop-database\n```\n'
 ```
 
-[fu-brave.sh@codeberg.org](https://codeberg.org/linluk/dump/src/branch/main/fu-brave.sh)
+[fu-brave.sh](https://codeberg.org/linluk/dump/src/branch/main/fu-brave.sh) (this `bash` script, on `codeberg.org`)
 
