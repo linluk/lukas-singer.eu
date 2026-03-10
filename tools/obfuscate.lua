@@ -22,7 +22,7 @@ function Inlines (inlines)
                     result,
                     pandoc.RawInline(
                         "html",
-                        '<script type="text/javascript">document.write(window.atob("' .. obfuscated_content .. '"));</script>'))
+                        '<script type="text/javascript">document.currentScript.insertAdjacentHTML("beforebegin", new TextDecoder().decode(Uint8Array.from(window.atob("' .. obfuscated_content .. '"), c => c.charCodeAt(0))));</script>'))
                 buffer = {}
             elseif in_obfuscate then
                 table.insert(buffer, el.text)
